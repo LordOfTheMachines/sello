@@ -40,6 +40,10 @@
               text-align:center; }
     #msg { color:#b3261e; font-size:13px; }
     .hidden { display:none; }
+    /* ID özgüllüğü .hidden'ı ezmesin diye açık kural: */
+    #signin.hidden, #dash.hidden { display:none; }
+    .del { color:#b3261e; cursor:pointer; border:none; background:none; font-size:12px; padding:2px 6px; }
+    .del:hover { text-decoration:underline; }
   </style>
 </head>
 <body>
@@ -77,6 +81,7 @@
           <th data-k="version">Sürüm</th>
           <th data-k="open_count">Açılış</th>
           <th data-k="last_seen">Son görülme</th>
+          <th></th>
         </tr>
       </thead>
       <tbody id="rows"></tbody>
@@ -87,7 +92,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged }
       from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-    import { getFirestore, collection, getDocs }
+    import { getFirestore, collection, onSnapshot, deleteDoc, doc }
       from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
     const firebaseConfig = {
@@ -105,12 +110,22 @@
     const $ = (id) => document.getElementById(id);
     let data = [];
     let sortKey = "last_seen", sortDir = -1;
+    let unsub = null;
 
     $("signinBtn").onclick = () =>
       signInWithPopup(auth, new GoogleAuthProvider()).catch(e => $("msg").textContent = e.message);
     $("signoutBtn").onclick = () => signOut(auth);
-    $("refreshBtn").onclick = load;
+    $("refreshBtn").onclick = render;
     $("search").addEventListener("input", render);
+    // Satır silme (yalnız sahibin; kurallarla korunur). Eski/test kayıtlarını temizlemek için.
+    $("rows").addEventListener("click", async (e) => {
+      const btn = e.target.closest("button.del");
+      if (!btn) return;
+      const id = btn.dataset.id, label = btn.dataset.label || id;
+      if (!confirm(label + " kaydını silmek istiyor musun?")) return;
+      try { await deleteDoc(doc(db, "kurulumlar", id)); }
+      catch (err) { alert("Silinemedi (yetki?): " + err.message); }
+    });
     document.querySelectorAll("th[data-k]").forEach(th => th.onclick = () => {
       const k = th.dataset.k;
       sortDir = (sortKey === k) ? -sortDir : (k === "last_seen" || k === "open_count" ? -1 : 1);
@@ -124,18 +139,16 @@
       $("refreshBtn").classList.toggle("hidden", !on);
       $("signoutBtn").classList.toggle("hidden", !on);
       $("who").textContent = on ? user.email : "";
-      if (on) load();
-    });
-
-    async function load() {
-      try {
-        const snap = await getDocs(collection(db, "kurulumlar"));
-        data = snap.docs.map(d => d.data());
-        stats(); render();
-      } catch (e) {
-        $("msg").textContent = "Okuma hatası (yetki?): " + e.message;
+      if (on) {
+        // Canlı dinle: kayıt eklenince/değişince/silinince tablo kendiliğinden güncellenir.
+        unsub = onSnapshot(collection(db, "kurulumlar"), (snap) => {
+          data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+          stats(); render();
+        }, (e) => { $("msg").textContent = "Okuma hatası (yetki?): " + e.message; });
+      } else if (unsub) {
+        unsub(); unsub = null;
       }
-    }
+    });
 
     function tsMillis(v) { // Firestore timestamp -> ms
       if (!v) return 0;
@@ -175,6 +188,7 @@
           <td>${esc(d.version) || "—"}</td>
           <td>${Number(d.open_count) || 0}</td>
           <td>${fmt(d.last_seen)}</td>
+          <td><button class="del" data-id="${esc(d.id)}" data-label="${esc(d.license_code || d.hostname || d.id)}">Sil</button></td>
         </tr>`).join("");
     }
     function esc(s) { return (s == null ? "" : String(s)).replace(/[<>&]/g, c =>
