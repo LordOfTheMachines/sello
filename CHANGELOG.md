@@ -2,6 +2,9 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.1.3]
+- Telemetri: **ilk açılış tarihi** (first_seen) kaydı (panoda "İlk görülme").
+
 ## [0.1.2]
 - Pencere başlığında sürüm gösterimi ("Sello vX.Y.Z").
 - Güncelleme şeridi açıkken alttaki bilgi yazısının taşması düzeltildi (içerik kendi içinde sığar).
