@@ -44,6 +44,8 @@
     #signin.hidden, #dash.hidden { display:none; }
     .del { color:#b3261e; cursor:pointer; border:none; background:none; font-size:12px; padding:2px 6px; }
     .del:hover { text-decoration:underline; }
+    tr.stale td { opacity:0.42; }                /* 14+ gündür görülmeyen makineler soluk */
+    tr.stale td .pill { background:#eee; color:#888; }
   </style>
 </head>
 <body>
@@ -70,6 +72,7 @@
     </div>
     <div class="toolbar">
       <input id="search" type="text" placeholder="Ara: bilgisayar adı, lisans, sürüm, kullanıcı…" />
+      <button id="csvBtn">CSV indir</button>
       <span id="count" class="muted"></span>
     </div>
     <table>
@@ -80,6 +83,7 @@
           <th data-k="username">Kullanıcı</th>
           <th data-k="version">Sürüm</th>
           <th data-k="open_count">Açılış</th>
+          <th data-k="first_seen">İlk görülme</th>
           <th data-k="last_seen">Son görülme</th>
           <th></th>
         </tr>
@@ -180,19 +184,44 @@
         return x < y ? -sortDir : x > y ? sortDir : 0;
       });
       $("count").textContent = rows.length + " kayıt";
-      $("rows").innerHTML = rows.map(d => `
-        <tr>
+      const STALE = 14 * 864e5; // 14 gün
+      $("rows").innerHTML = rows.map(d => {
+        const ls = tsMillis(d.last_seen);
+        const stale = ls && (Date.now() - ls > STALE);
+        return `
+        <tr class="${stale ? "stale" : ""}">
           <td class="mono"><span class="pill">${esc(d.license_code) || "—"}</span></td>
           <td>${esc(d.hostname) || "—"}</td>
           <td class="muted">${esc(d.username) || "—"}</td>
           <td>${esc(d.version) || "—"}</td>
           <td>${Number(d.open_count) || 0}</td>
+          <td>${fmt(d.first_seen)}</td>
           <td>${fmt(d.last_seen)}</td>
           <td><button class="del" data-id="${esc(d.id)}" data-label="${esc(d.license_code || d.hostname || d.id)}">Sil</button></td>
-        </tr>`).join("");
+        </tr>`;
+      }).join("");
     }
     function esc(s) { return (s == null ? "" : String(s)).replace(/[<>&]/g, c =>
       ({ "<": "&lt;", ">": "&gt;", "&": "&amp;" }[c])); }
+
+    // CSV dışa aktar (Excel uyumlu, UTF-8 BOM'lu).
+    $("csvBtn").onclick = () => {
+      const cols = ["license_code","hostname","username","version","open_count","first_seen","last_seen","machine_id"];
+      const head = ["Lisans","Bilgisayar","Kullanici","Surum","Acilis","Ilk gorulme","Son gorulme","machine_id"];
+      const q = (v) => '"' + String(v == null ? "" : v).replace(/"/g, '""') + '"';
+      const lines = [head.map(q).join(",")];
+      for (const d of data) {
+        lines.push(cols.map(c =>
+          (c === "first_seen" || c === "last_seen") ? q(fmt(d[c])) : q(d[c])
+        ).join(","));
+      }
+      const blob = new Blob(["﻿" + lines.join("\r\n")], { type: "text/csv;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "sello-kurulumlar.csv";
+      a.click();
+      URL.revokeObjectURL(a.href);
+    };
   </script>
 </body>
 </html>
