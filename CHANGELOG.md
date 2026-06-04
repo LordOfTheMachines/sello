@@ -2,6 +2,11 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.1.2]
+- Pencere başlığında sürüm gösterimi ("Sello vX.Y.Z").
+- Güncelleme şeridi açıkken alttaki bilgi yazısının taşması düzeltildi (içerik kendi içinde sığar).
+- Güncelleme sonrası eski sürüm (`.old`) eski süreç kapanır kapanmaz silinir (yeniden başlatma beklemeden).
+
 ## [0.1.1]
 - Tek-exe **otomatik güncelleme** (ed25519 imza doğrulamalı) etkin.
 - Küçük iyileştirmeler.
