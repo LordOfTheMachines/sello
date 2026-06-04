@@ -3,225 +3,274 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sello — Kurulum Panosu</title>
+  <title>Sello — e-Devlet e-İmza · hızlı, tek dosya, Java'sız</title>
+  <meta name="description" content="E-Devlet'in elektronik-imza.jar uygulamasının hafif yerine geçen, tek dosya e-imza giriş uygulaması. Java gerektirmez; kendini günceller." />
+  <meta property="og:title" content="Sello — e-Devlet e-İmza" />
+  <meta property="og:description" content="Java'sız, tek dosya, hızlı e-imza giriş uygulaması. Çift tıkla çalışır." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/logo.svg" />
   <style>
-    :root { --blue:#1689CA; --ink:#2f3437; --muted:#9aa0a6; --line:#e6eaed; --bg:#f6f8fa; }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family: system-ui, "Segoe UI", Roboto, sans-serif; color:var(--ink);
-           background:var(--bg); }
-    header { display:flex; align-items:center; gap:12px; padding:14px 22px; background:#fff;
-             border-bottom:1px solid var(--line); position:sticky; top:0; }
-    header .logo { width:24px; height:24px; background:var(--blue); border-radius:5px; flex:none; }
-    header h1 { font-size:16px; margin:0; flex:1; }
-    header .who { font-size:12px; color:var(--muted); }
-    button { font:inherit; cursor:pointer; border:1px solid var(--line); background:#fff;
-             padding:7px 14px; border-radius:7px; }
-    button.primary { background:var(--blue); color:#fff; border-color:var(--blue); }
-    button:hover { filter:brightness(0.97); }
-    main { padding:22px; max-width:1100px; margin:0 auto; }
-    .cards { display:flex; gap:12px; margin-bottom:16px; flex-wrap:wrap; }
-    .card { background:#fff; border:1px solid var(--line); border-radius:10px; padding:14px 18px;
-            min-width:140px; }
-    .card .n { font-size:24px; font-weight:700; }
-    .card .l { font-size:12px; color:var(--muted); }
-    .toolbar { display:flex; gap:10px; margin-bottom:12px; align-items:center; }
-    .toolbar input { flex:1; padding:9px 12px; border:1px solid var(--line); border-radius:8px;
-                     font:inherit; }
-    table { width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--line);
-            border-radius:10px; overflow:hidden; }
-    th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); font-size:13px;
-             white-space:nowrap; }
-    th { background:#fafbfc; color:#5a6166; font-weight:600; cursor:pointer; user-select:none; }
-    tr:last-child td { border-bottom:none; }
-    td.mono { font-family: ui-monospace, "Consolas", monospace; }
-    .pill { background:#eef6fb; color:#1b6fa3; padding:2px 8px; border-radius:20px; font-size:12px; }
-    .muted { color:var(--muted); }
-    #signin { display:flex; flex-direction:column; align-items:center; gap:14px; padding:80px 20px;
-              text-align:center; }
-    #msg { color:#b3261e; font-size:13px; }
-    .hidden { display:none; }
-    /* ID özgüllüğü .hidden'ı ezmesin diye açık kural: */
-    #signin.hidden, #dash.hidden { display:none; }
-    .del { color:#b3261e; cursor:pointer; border:none; background:none; font-size:12px; padding:2px 6px; }
-    .del:hover { text-decoration:underline; }
-    tr.stale td { opacity:0.42; }                /* 14+ gündür görülmeyen makineler soluk */
-    tr.stale td .pill { background:#eee; color:#888; }
+    :root{
+      --blue:#1689CA; --blue-d:#0f6fa6; --green:#3f8f43; --ink:#1f2a31; --muted:#647580;
+      --line:#e6ecf0; --bg:#f7fafc; --card:#ffffff;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+    a{color:var(--blue);text-decoration:none}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+    /* nav */
+    nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    nav .wrap{display:flex;align-items:center;gap:14px;height:60px}
+    nav img{width:30px;height:30px}
+    nav .brand{font-weight:800;font-size:18px;letter-spacing:-.3px}
+    nav .spacer{flex:1}
+    nav a.nl{color:var(--muted);font-weight:600;font-size:14px;margin:0 10px;display:none}
+    @media(min-width:760px){nav a.nl{display:inline}}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;border-radius:10px;padding:10px 18px;border:1px solid transparent;cursor:pointer;font-size:15px;transition:.15s}
+    .btn.primary{background:var(--blue);color:#fff}
+    .btn.primary:hover{background:var(--blue-d)}
+    .btn.ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+    .btn.ghost:hover{border-color:#c9d4db}
+
+    /* hero */
+    header.hero{background:
+      radial-gradient(1200px 480px at 78% -8%, #e7f4fc 0, rgba(231,244,252,0) 60%),
+      radial-gradient(900px 420px at 8% 0%, #eaf6ec 0, rgba(234,246,236,0) 55%),
+      var(--bg);
+      padding:64px 0 40px}
+    .hero-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
+    @media(min-width:880px){.hero-grid{grid-template-columns:1.05fr .95fr}}
+    .pill{display:inline-flex;align-items:center;gap:7px;background:#eaf6fb;color:var(--blue-d);font-weight:700;font-size:13px;padding:6px 13px;border-radius:999px;border:1px solid #d3ecf7}
+    h1{font-size:clamp(34px,5vw,52px);line-height:1.08;margin:18px 0 14px;letter-spacing:-1.2px}
+    h1 .g{color:var(--blue)}
+    .lead{font-size:19px;color:#3b4a54;max-width:520px;margin:0 0 26px}
+    .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .cta small{color:var(--muted);font-size:13px}
+    .trust{display:flex;flex-wrap:wrap;gap:18px;margin-top:26px;color:var(--muted);font-size:13.5px;font-weight:600}
+    .trust span{display:inline-flex;align-items:center;gap:7px}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+    .hero-art{position:relative}
+    .hero-art img{width:100%;height:auto;border-radius:14px;display:block}
+    .hero-seal{position:absolute;top:-26px;right:-10px;width:86px;height:86px;filter:drop-shadow(0 8px 18px rgba(11,58,85,.25))}
+    @media(max-width:880px){.hero-seal{width:64px;top:-18px}}
+
+    /* sections */
+    section{padding:58px 0}
+    .eyebrow{color:var(--blue);font-weight:800;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin:0 0 8px}
+    h2{font-size:clamp(26px,3.4vw,34px);margin:0 0 12px;letter-spacing:-.6px}
+    .sub{color:var(--muted);font-size:17px;max-width:620px;margin:0 0 34px}
+
+    /* steps */
+    .steps{display:grid;grid-template-columns:1fr;gap:18px;counter-reset:s}
+    @media(min-width:720px){.steps{grid-template-columns:repeat(4,1fr)}}
+    .step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 18px;position:relative}
+    .step::before{counter-increment:s;content:counter(s);display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:9px;background:#eaf6fb;color:var(--blue-d);font-weight:800;margin-bottom:12px}
+    .step b{display:block;font-size:16px;margin-bottom:4px}
+    .step p{margin:0;color:var(--muted);font-size:14px}
+
+    /* shots */
+    .shots{display:grid;grid-template-columns:1fr;gap:20px}
+    @media(min-width:760px){.shots{grid-template-columns:repeat(3,1fr)}}
+    figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 6px 22px rgba(23,58,82,.06)}
+    figure img{width:100%;height:auto;display:block;background:#eef3f6}
+    figcaption{padding:12px 16px;font-size:14px;color:var(--muted);border-top:1px solid var(--line)}
+    figcaption b{color:var(--ink)}
+
+    /* features */
+    .feat{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:680px){.feat{grid-template-columns:repeat(2,1fr)}}
+    @media(min-width:980px){.feat{grid-template-columns:repeat(3,1fr)}}
+    .f{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+    .f .ic{width:42px;height:42px;border-radius:11px;background:#eaf6fb;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+    .f .ic svg{width:22px;height:22px;stroke:var(--blue);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .f h3{margin:0 0 6px;font-size:17px}
+    .f p{margin:0;color:var(--muted);font-size:14.5px}
+
+    /* security band */
+    .band{background:linear-gradient(180deg,#0f3a55,#0c2c41);color:#dce8f0;border-radius:18px;padding:40px 34px}
+    .band h2{color:#fff}
+    .band .sub{color:#a9c2d2}
+    .seclist{display:grid;grid-template-columns:1fr;gap:14px;margin-top:8px}
+    @media(min-width:720px){.seclist{grid-template-columns:repeat(2,1fr)}}
+    .seclist .it{display:flex;gap:12px;align-items:flex-start}
+    .seclist .it svg{flex:none;width:22px;height:22px;stroke:#7fe39a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;margin-top:1px}
+    .seclist .it b{color:#fff;display:block;font-size:15px}
+    .seclist .it span{font-size:14px;color:#a9c2d2}
+
+    /* download cta */
+    .dl{text-align:center;background:
+      radial-gradient(700px 280px at 50% 0,#e7f4fc 0,rgba(231,244,252,0) 70%),var(--card);
+      border:1px solid var(--line);border-radius:18px;padding:50px 24px}
+    .dl img{width:64px;height:64px;margin-bottom:14px}
+    .dl .opt{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px;color:var(--muted);font-size:14px}
+    .req{margin-top:14px;color:var(--muted);font-size:13px}
+
+    footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13.5px}
+    footer .wrap{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+    footer a{color:var(--muted);font-weight:600}
+    .kbd{font-family:Consolas,ui-monospace,monospace;background:#eef3f6;border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-size:13px;color:#33424c}
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo"></div>
-    <h1>Sello — Kurulum Panosu</h1>
-    <span id="who" class="who"></span>
-    <button id="refreshBtn" class="hidden">Yenile</button>
-    <button id="signoutBtn" class="hidden">Çıkış</button>
+  <nav>
+    <div class="wrap">
+      <img src="assets/logo.svg" alt="" />
+      <span class="brand">Sello</span>
+      <span class="spacer"></span>
+      <a class="nl" href="#nasil">Nasıl çalışır</a>
+      <a class="nl" href="#ozellikler">Özellikler</a>
+      <a class="nl" href="#guvenlik">Güvenlik</a>
+      <a class="btn primary" href="https://github.com/LordOfTheMachines/sello/releases/latest">İndir</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill">● Java / JVM gerektirmez</span>
+        <h1>E-Devlet'e e-imzayla giriş, <span class="g">tek dosyada</span>.</h1>
+        <p class="lead">
+          E-Devlet'in yavaş <span class="kbd">elektronik-imza.jar</span> uygulamasının hafif yerine geçer.
+          Çift tıkla çalışır, Windows'un yerleşik tarayıcı motorunu kullanır, kendini günceller.
+          Arayüz resmî uygulamayla görsel olarak aynıdır.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="https://github.com/LordOfTheMachines/sello/releases/latest">⬇ Son sürümü indir</a>
+          <a class="btn ghost" href="#nasil">Nasıl çalışır?</a>
+        </div>
+        <div class="trust">
+          <span><i class="dot"></i> Kurulum yok (portable .exe)</span>
+          <span><i class="dot"></i> Otomatik güncelleme</span>
+          <span><i class="dot"></i> Windows 10/11</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="assets/shot-giris.png" onerror="this.onerror=null;this.src='assets/mockup.svg'" alt="Sello giriş ekranı" />
+        <img class="hero-seal" src="assets/logo.svg" alt="" />
+      </div>
+    </div>
   </header>
 
-  <div id="signin">
-    <p>Kurulum verilerini görmek için Google hesabınla giriş yap.</p>
-    <button id="signinBtn" class="primary">Google ile giriş yap</button>
-    <p id="msg"></p>
-  </div>
-
-  <main id="dash" class="hidden">
-    <div class="cards">
-      <div class="card"><div id="cTotal" class="n">—</div><div class="l">Toplam makine</div></div>
-      <div class="card"><div id="cActive" class="n">—</div><div class="l">Son 7 gün aktif</div></div>
-      <div class="card"><div id="cOpens" class="n">—</div><div class="l">Toplam açılış</div></div>
-      <div class="card"><div id="cVersions" class="n">—</div><div class="l">Sürüm sayısı</div></div>
+  <section id="nasil">
+    <div class="wrap">
+      <p class="eyebrow">Nasıl çalışır</p>
+      <h2>Dört adımda giriş</h2>
+      <p class="sub">Resmî akışın aynısı — ama JVM açılışı, Web Start indirmeleri ve bekleme yok.</p>
+      <div class="steps">
+        <div class="step"><b>Kartı tak</b><p>Akıllı kart okuyucunu bağla, uygulamayı çift tıkla aç.</p></div>
+        <div class="step"><b>Kodu gir</b><p>Kart tipini seç, tarayıcıdaki İşlem Kodu'nu yaz, DEVAM'a bas.</p></div>
+        <div class="step"><b>Sözleşme & PIN</b><p>Sözleşmeyi gör, dağınık tuş takımından PIN'ini gir.</p></div>
+        <div class="step"><b>İMZALA</b><p>İmza kartta üretilir, e-Devlet girişin tamamlanır.</p></div>
+      </div>
     </div>
-    <div class="toolbar">
-      <input id="search" type="text" placeholder="Ara: bilgisayar adı, lisans, sürüm, kullanıcı…" />
-      <button id="csvBtn">CSV indir</button>
-      <span id="count" class="muted"></span>
+  </section>
+
+  <section id="ekranlar" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow">Ekran görüntüleri</p>
+      <h2>Tanıdık arayüz, hızlı motor</h2>
+      <p class="sub">Resmî uygulamayla görsel olarak aynı; arkada Java yerine yerleşik WebView2 çalışır.</p>
+      <div class="shots">
+        <figure>
+          <img src="assets/shot-giris.png" onerror="this.onerror=null;this.src='assets/mockup.svg'" alt="Giriş ekranı" />
+          <figcaption><b>Giriş</b> — kart tipi + işlem kodu</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/shot-pin.png" onerror="this.onerror=null;this.src='assets/mockup.svg'" alt="PIN ekranı" />
+          <figcaption><b>PIN</b> — her açılışta karışan tuşlar</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/shot-sonuc.png" onerror="this.onerror=null;this.src='assets/mockup.svg'" alt="İmza tamamlandı ekranı" />
+          <figcaption><b>İmza tamamlandı</b> — giriş hazır</figcaption>
+        </figure>
+      </div>
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th data-k="license_code">Lisans</th>
-          <th data-k="hostname">Bilgisayar</th>
-          <th data-k="username">Kullanıcı</th>
-          <th data-k="version">Sürüm</th>
-          <th data-k="open_count">Açılış</th>
-          <th data-k="first_seen">İlk görülme</th>
-          <th data-k="last_seen">Son görülme</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody id="rows"></tbody>
-    </table>
-  </main>
+  </section>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged }
-      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-    import { getFirestore, collection, onSnapshot, deleteDoc, doc }
-      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  <section id="ozellikler" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow">Neden Sello</p>
+      <h2>Hafif, güvenli, kendini yöneten</h2>
+      <div class="feat">
+        <div class="f">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></div>
+          <h3>Java'sız ve hızlı</h3>
+          <p>JVM, Web Start veya Python kurulumu yok. Yerleşik WebView2 ile saniyeler içinde açılır.</p>
+        </div>
+        <div class="f">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg></div>
+          <h3>Tek dosya, taşınabilir</h3>
+          <p>Tek <span class="kbd">.exe</span>. Kurulum gerekmez; USB'den bile çalıştırabilirsin.</p>
+        </div>
+        <div class="f">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.5 9a9 9 0 0 1 14.9-3.4L23 10M1 14l4.6 4.4A9 9 0 0 0 20.5 15"/></svg></div>
+          <h3>Otomatik güncelleme</h3>
+          <p>Açılışta yeni sürümü görür, dijital imzayla doğrular ve kendini yeniler.</p>
+        </div>
+        <div class="f">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Kart güvenliği</h3>
+          <p>Yanlış/kilitli PIN durumunda giriş denenmez — kartı kilitleme riski yok.</p>
+        </div>
+        <div class="f">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <h3>TLS her zaman açık</h3>
+          <p>Sertifika doğrulaması kapatılmaz. PIN ve imzalı veri loglanmaz.</p>
+        </div>
+        <div class="f">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <h3>Standart imza</h3>
+          <p>PKCS#11 (AKİS doğrulandı) + CAdES-BES CMS imzası; openssl ile doğrulandı.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyAcmTGo_M9oZggQWtHigY3UmWlbper_Cdg",
-      authDomain: "sello-lisans.firebaseapp.com",
-      projectId: "sello-lisans",
-      storageBucket: "sello-lisans.firebasestorage.app",
-      messagingSenderId: "158948390903",
-      appId: "1:158948390903:web:a1f443b8d66f09ffd8a0f2"
-    };
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
+  <section id="guvenlik" style="padding-top:0">
+    <div class="wrap">
+      <div class="band">
+        <p class="eyebrow" style="color:#7fe39a">Güvenlik & gizlilik</p>
+        <h2>PIN'in kartta kalır</h2>
+        <p class="sub">İmza işlemi kartın içinde gerçekleşir; uygulama hassas veriyi saklamaz.</p>
+        <div class="seclist">
+          <div class="it"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><div><b>PIN loglanmaz</b><span>Bellekte kısa tutulur, hemen silinir. Argüman/ortam değişkeni ile alınmaz.</span></div></div>
+          <div class="it"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><div><b>TLS doğrulaması zorunlu</b><span>Sunucu sertifikası her zaman doğrulanır; "her sertifikayı kabul et" yoktur.</span></div></div>
+          <div class="it"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><div><b>İmzalı güncelleme</b><span>Güncelleme ed25519 imzasıyla doğrulanır; sahte güncelleme reddedilir.</span></div></div>
+          <div class="it"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><div><b>Özel anahtar kartta kalır</b><span>İmza kartın içinde üretilir; kartın özel anahtarı hiçbir zaman dışarı çıkmaz.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    const $ = (id) => document.getElementById(id);
-    let data = [];
-    let sortKey = "last_seen", sortDir = -1;
-    let unsub = null;
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="dl">
+        <img src="assets/logo.svg" alt="Sello" />
+        <h2>Hemen indir, çift tıkla başla</h2>
+        <p class="sub" style="margin:0 auto">Windows 10/11 · akıllı kart okuyucusu ve middleware (AKİS için <span class="kbd">akisp11.dll</span>) gerekir.</p>
+        <div class="cta" style="justify-content:center;margin-top:22px">
+          <a class="btn primary" href="https://github.com/LordOfTheMachines/sello/releases/latest">⬇ Son sürümü indir</a>
+          <a class="btn ghost" href="https://github.com/LordOfTheMachines/sello/blob/main/CHANGELOG.md">Sürüm geçmişi</a>
+        </div>
+        <div class="opt">
+          <span><b>sello-app.exe</b> — taşınabilir tek dosya (kendini günceller)</span>
+          <span>·</span>
+          <span><b>Sello_x.y.z_x64-setup.exe</b> — kurulum (Başlat menüsü)</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    $("signinBtn").onclick = () =>
-      signInWithPopup(auth, new GoogleAuthProvider()).catch(e => $("msg").textContent = e.message);
-    $("signoutBtn").onclick = () => signOut(auth);
-    $("refreshBtn").onclick = render;
-    $("search").addEventListener("input", render);
-    // Satır silme (yalnız sahibin; kurallarla korunur). Eski/test kayıtlarını temizlemek için.
-    $("rows").addEventListener("click", async (e) => {
-      const btn = e.target.closest("button.del");
-      if (!btn) return;
-      const id = btn.dataset.id, label = btn.dataset.label || id;
-      if (!confirm(label + " kaydını silmek istiyor musun?")) return;
-      try { await deleteDoc(doc(db, "kurulumlar", id)); }
-      catch (err) { alert("Silinemedi (yetki?): " + err.message); }
-    });
-    document.querySelectorAll("th[data-k]").forEach(th => th.onclick = () => {
-      const k = th.dataset.k;
-      sortDir = (sortKey === k) ? -sortDir : (k === "last_seen" || k === "open_count" ? -1 : 1);
-      sortKey = k; render();
-    });
-
-    onAuthStateChanged(auth, (user) => {
-      const on = !!user;
-      $("signin").classList.toggle("hidden", on);
-      $("dash").classList.toggle("hidden", !on);
-      $("refreshBtn").classList.toggle("hidden", !on);
-      $("signoutBtn").classList.toggle("hidden", !on);
-      $("who").textContent = on ? user.email : "";
-      if (on) {
-        // Canlı dinle: kayıt eklenince/değişince/silinince tablo kendiliğinden güncellenir.
-        unsub = onSnapshot(collection(db, "kurulumlar"), (snap) => {
-          data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-          stats(); render();
-        }, (e) => { $("msg").textContent = "Okuma hatası (yetki?): " + e.message; });
-      } else if (unsub) {
-        unsub(); unsub = null;
-      }
-    });
-
-    function tsMillis(v) { // Firestore timestamp -> ms
-      if (!v) return 0;
-      if (typeof v === "object" && v.seconds != null) return v.seconds * 1000;
-      const t = Date.parse(v); return isNaN(t) ? 0 : t;
-    }
-    function fmt(v) {
-      const ms = tsMillis(v); if (!ms) return "—";
-      return new Date(ms).toLocaleString("tr-TR");
-    }
-
-    function stats() {
-      const now = Date.now(), week = 7 * 864e5;
-      $("cTotal").textContent = data.length;
-      $("cActive").textContent = data.filter(d => now - tsMillis(d.last_seen) < week).length;
-      $("cOpens").textContent = data.reduce((s, d) => s + (Number(d.open_count) || 0), 0);
-      $("cVersions").textContent = new Set(data.map(d => d.version || "?")).size;
-    }
-
-    function render() {
-      const q = $("search").value.trim().toLowerCase();
-      let rows = data.filter(d => !q ||
-        [d.license_code, d.hostname, d.username, d.version].join(" ").toLowerCase().includes(q));
-      rows.sort((a, b) => {
-        let x = a[sortKey], y = b[sortKey];
-        if (sortKey === "last_seen") { x = tsMillis(x); y = tsMillis(y); }
-        else if (sortKey === "open_count") { x = Number(x) || 0; y = Number(y) || 0; }
-        else { x = (x || "").toString().toLowerCase(); y = (y || "").toString().toLowerCase(); }
-        return x < y ? -sortDir : x > y ? sortDir : 0;
-      });
-      $("count").textContent = rows.length + " kayıt";
-      const STALE = 14 * 864e5; // 14 gün
-      $("rows").innerHTML = rows.map(d => {
-        const ls = tsMillis(d.last_seen);
-        const stale = ls && (Date.now() - ls > STALE);
-        return `
-        <tr class="${stale ? "stale" : ""}">
-          <td class="mono"><span class="pill">${esc(d.license_code) || "—"}</span></td>
-          <td>${esc(d.hostname) || "—"}</td>
-          <td class="muted">${esc(d.username) || "—"}</td>
-          <td>${esc(d.version) || "—"}</td>
-          <td>${Number(d.open_count) || 0}</td>
-          <td>${fmt(d.first_seen)}</td>
-          <td>${fmt(d.last_seen)}</td>
-          <td><button class="del" data-id="${esc(d.id)}" data-label="${esc(d.license_code || d.hostname || d.id)}">Sil</button></td>
-        </tr>`;
-      }).join("");
-    }
-    function esc(s) { return (s == null ? "" : String(s)).replace(/[<>&]/g, c =>
-      ({ "<": "&lt;", ">": "&gt;", "&": "&amp;" }[c])); }
-
-    // CSV dışa aktar (Excel uyumlu, UTF-8 BOM'lu).
-    $("csvBtn").onclick = () => {
-      const cols = ["license_code","hostname","username","version","open_count","first_seen","last_seen","machine_id"];
-      const head = ["Lisans","Bilgisayar","Kullanici","Surum","Acilis","Ilk gorulme","Son gorulme","machine_id"];
-      const q = (v) => '"' + String(v == null ? "" : v).replace(/"/g, '""') + '"';
-      const lines = [head.map(q).join(",")];
-      for (const d of data) {
-        lines.push(cols.map(c =>
-          (c === "first_seen" || c === "last_seen") ? q(fmt(d[c])) : q(d[c])
-        ).join(","));
-      }
-      const blob = new Blob(["﻿" + lines.join("\r\n")], { type: "text/csv;charset=utf-8" });
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = "sello-kurulumlar.csv";
-      a.click();
-      URL.revokeObjectURL(a.href);
-    };
-  </script>
+  <footer>
+    <div class="wrap">
+      <span>© Sello · Kişisel/kontrollü dağıtım · Kaynak kod ayrı tutulur, bu site yalnız dağıtım içindir.</span>
+      <span>
+        <a href="https://github.com/LordOfTheMachines/sello">GitHub</a> ·
+        <a href="https://github.com/LordOfTheMachines/sello/releases/latest">Sürümler</a>
+      </span>
+    </div>
+  </footer>
 </body>
 </html>

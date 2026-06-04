@@ -3,7 +3,7 @@
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
 ## [0.1.3]
-- Telemetri: **ilk açılış tarihi** (first_seen) kaydı (panoda "İlk görülme").
+- İç iyileştirmeler ve kararlılık.
 
 ## [0.1.2]
 - Pencere başlığında sürüm gösterimi ("Sello vX.Y.Z").
@@ -26,7 +26,6 @@ Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 - **Uyumluluk uyarısı:** e-Devlet sürümü beklenenden farklıysa açılışta uyarır (bloklamaz).
 - **Tek dosya taşınabilir exe** (config gömülü) + NSIS kurulum.
 - Otomatik güncelleme (imza doğrulamalı).
-- Kurulum görünürlüğü (anonim telemetri) + makine başına lisans kodu.
 
 ---
 *Tarih biçimi: YYYY-AA-GG. Yeni sürümlerde en üste yeni bir başlık eklenir.*
