@@ -23,7 +23,7 @@
   <!-- Kart Tipi -->
   <text x="64" y="148" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#6b7782">Kart Tipi</text>
   <rect x="64" y="156" width="320" height="42" rx="8" fill="#f4f7f9" stroke="#d9e0e5"/>
-  <text x="80" y="182" font-family="Segoe UI, system-ui, sans-serif" font-size="14" fill="#2f3b43">AKİS (akisp11.dll)</text>
+  <text x="80" y="182" font-family="Segoe UI, system-ui, sans-serif" font-size="14" fill="#2f3b43">Tubitak AKİS</text>
   <path d="M356 173 l8 8 l8 -8" stroke="#8a97a0" stroke-width="2" fill="none" stroke-linecap="round"/>
 
   <!-- İşlem Kodu -->
