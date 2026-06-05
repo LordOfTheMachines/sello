@@ -2,6 +2,9 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.1.4]
+- Uygulama simgesi yenilendi: mühür temalı yeni logo (pencere, görev çubuğu ve dosya simgesi).
+
 ## [0.1.3]
 - İç iyileştirmeler ve kararlılık.
 
