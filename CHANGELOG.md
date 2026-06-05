@@ -2,6 +2,10 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.1.6]
+- Güncelleme sonrası **uygulama simgesi kendiliğinden tazelenir** (Windows kabuğuna bildirim
+  gönderilir); artık simge önbelleğini elle temizlemeye gerek yok.
+
 ## [0.1.5]
 - Güncelleme artık exe'yi **yerinde** günceller: dosya masaüstündeyse simgenin **konumu korunur**
   (eskiden güncelleme sonrası masaüstündeki yeri değişebiliyordu).
