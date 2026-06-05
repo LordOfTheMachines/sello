@@ -1,0 +1,4 @@
+# Bu depo yalnız DAĞITIM içindir (uygulamanın kaynak kodu burada değildir).
+# GitHub Pages için gereken HTML dosyaları, GitHub'ın "Languages" istatistiğinde
+# kod olarak sayılmasın — repo bir "HTML projesi" gibi yanlış izlenim vermesin.
+*.html linguist-documentation
