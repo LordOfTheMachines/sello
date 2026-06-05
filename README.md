@@ -44,6 +44,10 @@
 
 - **`sello-app.exe`** — **taşınabilir tek dosya** (kurulum yok, çift tıkla çalıştır). Kendini otomatik günceller.
 
+> ⚠️ Yazılımı **yalnızca bu resmî kaynaktan** indirin; yeniden dağıtımı yasaktır. İndirip
+> kullanarak **[Kullanım Sözleşmesi'ni (EULA)](LICENSE)** kabul etmiş olursunuz (uygulama ilk
+> açılışta da onay ister).
+
 > **Önkoşul:** Windows 10/11 + akıllı kart okuyucusu ve middleware (AKİS için `akisp11.dll`).
 
 ## 🚀 Kullanım
@@ -69,6 +73,13 @@ kendini yeniler — installer gerekmez.
 ## 📋 Sürüm geçmişi
 
 Bkz. [CHANGELOG.md](CHANGELOG.md).
+
+## 📄 Lisans
+
+**Tescilli ücretsiz yazılım** (kaynak kod dağıtılmaz). Yalnızca **kişisel ve ticari olmayan**
+kullanım içindir; **yeniden dağıtım yasaktır** (yalnız resmî kaynaktan indirin). Yazılım
+**"olduğu gibi"** sunulur, **garanti verilmez** ve tüm sorumluluk/risk kullanıcıdadır. Tam metin:
+**[LICENSE](LICENSE)** (TR + EN). İndirip kullanarak bu sözleşmeyi kabul etmiş olursunuz.
 
 ---
 

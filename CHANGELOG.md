@@ -2,6 +2,11 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.1.7]
+- **Kullanım Sözleşmesi (EULA)** eklendi: ilk açılışta sözleşme (TR + EN) gösterilir, **kabul
+  edilmeden uygulama kullanılamaz**. Yazılım tescilli/ücretsiz; yalnız kişisel/ticari olmayan
+  kullanım; yeniden dağıtım yasak; "olduğu gibi", tüm sorumluluk kullanıcıda.
+
 ## [0.1.6]
 - Güncelleme sonrası **uygulama simgesi kendiliğinden tazelenir** (Windows kabuğuna bildirim
   gönderilir); artık simge önbelleğini elle temizlemeye gerek yok.

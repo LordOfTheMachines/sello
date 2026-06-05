@@ -1,0 +1,116 @@
+SELLO — SON KULLANICI LİSANS SÖZLEŞMESİ (EULA)
+Sürüm 1.0 — 2026-06-05
+
+ÖNEMLİ: Bu yazılımı ("Sello") indirerek, kurarak veya kullanarak bu sözleşmeyi
+okuduğunuzu, anladığınızı ve kabul ettiğinizi beyan edersiniz. Kabul etmiyorsanız
+yazılımı indirmeyin, kurmayın ve kullanmayın; uygulamadaki "Reddet" seçeneğiyle çıkın.
+
+1. LİSANS
+Sello, hak sahibi tarafından size yalnızca KİŞİSEL ve TİCARİ OLMAYAN kullanım için;
+ücretsiz, münhasır olmayan ve devredilemez bir kullanım hakkı olarak sunulur.
+
+2. KISITLAMALAR
+Aşağıdakileri yapamazsınız:
+(a) Yazılımı satmak, kiralamak veya herhangi bir ticari amaçla kullanmak;
+(b) Yazılımı yeniden dağıtmak, kopyasını başkalarına vermek veya yeniden yayımlamak —
+    yazılım YALNIZCA hak sahibinin resmî dağıtım kaynağından (resmî GitHub sürümleri)
+    indirilmelidir;
+(c) Yazılımı tersine mühendislikle çözmek, kaynak koda dönüştürmek (decompile), parçalarına
+    ayırmak (disassemble) veya türev çalışma oluşturmak;
+(d) Telif veya uyarı bildirimlerini kaldırmak ya da değiştirmek.
+
+3. KAYNAK KOD
+Yazılım yalnızca çalıştırılabilir (ikili/binary) biçimde sunulur. Kaynak kodu sağlanmaz ve
+bu sözleşme kaynak koda erişim hakkı vermez.
+
+4. MÜLKİYET
+Yazılımın tüm hakları hak sahibine aittir. Bu sözleşme yalnızca yukarıdaki sınırlı kullanım
+hakkını verir; mülkiyeti devretmez.
+
+5. RESMÎ BAĞLANTI YOKTUR
+Sello bağımsız ve GAYRİRESMÎ bir araçtır; e-Devlet, TÜBİTAK, Türksat veya herhangi bir kamu
+kurumu ile bağlantılı, onlar tarafından onaylanmış veya desteklenmiş DEĞİLDİR. Tüm marka ve
+adlar ilgili sahiplerine aittir.
+
+6. GARANTİ REDDİ
+YAZILIM "OLDUĞU GİBİ" VE "MEVCUT HALİYLE" SUNULUR; AÇIK VEYA ZIMNÎ HİÇBİR GARANTİ VERİLMEZ
+(TİCARİ ELVERİŞLİLİK, BELİRLİ BİR AMACA UYGUNLUK VE İHLAL ETMEME DAHİL ANCAK BUNLARLA SINIRLI
+OLMAMAK ÜZERE). YAZILIMIN KESİNTİSİZ VEYA HATASIZ ÇALIŞACAĞI GARANTİ EDİLMEZ.
+
+7. SORUMLULUĞUN SINIRLANDIRILMASI
+YAZILIMIN KULLANIMINDAN DOĞAN TÜM RİSK SİZE AİTTİR. YÜRÜRLÜKTEKİ HUKUKUN İZİN VERDİĞİ AZAMÎ
+ÖLÇÜDE, HAK SAHİBİ; YAZILIMIN KULLANIMINDAN VEYA KULLANILAMAMASINDAN DOĞAN HİÇBİR DOĞRUDAN,
+DOLAYLI, ARIZÎ, ÖZEL VEYA SONUÇSAL ZARARDAN (AKILLI KARTIN KİLİTLENMESİ; e-İMZA VEYA GİRİŞ
+İŞLEMLERİNİN BAŞARISIZ OLMASI; VERİ KAYBI; İŞ KAYBI DAHİL) SORUMLU DEĞİLDİR.
+
+8. KULLANICININ SORUMLULUĞU
+Yazılımı hukuka uygun biçimde kullanmak; akıllı kartınızın, PIN'inizin ve sertifikanızın
+güvenliğini sağlamak; e-Devlet kullanım şartlarına ve ilgili mevzuata uymak yalnızca size
+aittir. Yanlış PIN denemelerinin akıllı kartı kilitleyebileceğini kabul edersiniz.
+
+9. FESİH
+Bu şartları ihlal etmeniz hâlinde lisansınız kendiliğinden sona erer; bu durumda yazılımı
+kullanmayı durdurmanız ve tüm kopyalarını silmeniz gerekir.
+
+10. UYGULANACAK HUKUK
+Bu sözleşme Türkiye Cumhuriyeti hukukuna tabidir.
+
+
+==============================================================================
+ENGLISH TRANSLATION (for convenience; the Turkish text above prevails in case of conflict)
+==============================================================================
+
+SELLO — END USER LICENSE AGREEMENT (EULA)
+Version 1.0 — 2026-06-05
+
+IMPORTANT: By downloading, installing, or using this software ("Sello") you acknowledge that
+you have read, understood, and agree to this Agreement. If you do not agree, do not download,
+install, or use the software; exit using the "Decline" option in the app.
+
+1. LICENSE
+Sello is provided to you free of charge as a non-exclusive, non-transferable right to use the
+software for PERSONAL and NON-COMMERCIAL purposes only.
+
+2. RESTRICTIONS
+You may not:
+(a) Sell, rent, or use the software for any commercial purpose;
+(b) Redistribute, give copies to others, or re-publish the software — it must be obtained
+    ONLY from the rights holder's official distribution source (official GitHub releases);
+(c) Reverse engineer, decompile, disassemble, or create derivative works;
+(d) Remove or alter any notices.
+
+3. SOURCE CODE
+The software is provided in executable (binary) form only. No source code is provided and this
+Agreement grants no right to it.
+
+4. OWNERSHIP
+All rights in the software remain with the rights holder. This Agreement grants only the
+limited license above and does not transfer ownership.
+
+5. NO AFFILIATION
+Sello is an independent, UNOFFICIAL tool and is NOT affiliated with, endorsed by, or supported
+by e-Devlet, TÜBİTAK, Türksat, or any government entity. All trademarks belong to their
+respective owners.
+
+6. DISCLAIMER OF WARRANTY
+THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+NON-INFRINGEMENT. IT IS NOT GUARANTEED TO BE UNINTERRUPTED OR ERROR-FREE.
+
+7. LIMITATION OF LIABILITY
+YOU ASSUME ALL RISK ARISING FROM USE OF THE SOFTWARE. TO THE MAXIMUM EXTENT PERMITTED BY LAW,
+THE RIGHTS HOLDER SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, OR
+CONSEQUENTIAL DAMAGES (INCLUDING SMART CARD LOCKOUT; FAILED e-SIGNATURE OR LOGIN OPERATIONS;
+DATA LOSS; OR LOSS OF BUSINESS) ARISING FROM USE OR INABILITY TO USE THE SOFTWARE.
+
+8. YOUR RESPONSIBILITY
+You are solely responsible for using the software lawfully; for the security of your smart
+card, PIN, and certificate; and for compliance with e-Devlet terms and applicable law. You
+acknowledge that incorrect PIN attempts may lock your card.
+
+9. TERMINATION
+This license terminates automatically if you breach these terms, upon which you must stop
+using the software and delete all copies.
+
+10. GOVERNING LAW
+This Agreement is governed by the laws of the Republic of Türkiye.
