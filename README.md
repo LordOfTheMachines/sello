@@ -100,6 +100,13 @@ Tepsi → **Ayarlar → "Sello'yu kaldır"**: autostart kaydı, yerel veri ve uy
 
 Bkz. [CHANGELOG.md](CHANGELOG.md).
 
+## 📬 İletişim
+
+Soru, öneri ve destek için geliştirici **Mehmet Gilik**:
+
+- ✉️ **E-posta:** [gilikmehmet@gmail.com](mailto:gilikmehmet@gmail.com)
+- 📞 **Telefon:** [+90 542 543 83 75](tel:+905425438375)
+
 ## 📄 Lisans
 
 **Tescilli ücretsiz yazılım** (kaynak kod dağıtılmaz). Yalnızca **kişisel ve ticari olmayan**
