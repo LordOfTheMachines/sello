@@ -1,0 +1,74 @@
+<svg width="380" height="480" viewBox="0 0 380 480" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sello Ayarlar penceresi">
+  <defs>
+    <filter id="sh2" x="-8%" y="-6%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#0b3a55" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+  <style>
+    .t{font-family:"Segoe UI",system-ui,sans-serif}
+    .muted{fill:#9AA0A6}.ink{fill:#3C4043}
+    .lab{fill:#2F3437;font-weight:600;font-size:12.5px}
+    .desc{fill:#9AA0A6;font-size:10.5px}
+  </style>
+
+  <rect x="14" y="10" width="352" height="458" rx="12" fill="#ffffff" filter="url(#sh2)"/>
+
+  <!-- başlık -->
+  <path d="M14 22a12 12 0 0 1 12-12h328a12 12 0 0 1 12 12v22H14z" fill="#1689CA"/>
+  <text x="30" y="32" class="t" fill="#fff" font-size="14.5" font-weight="700">Ayarlar</text>
+  <text x="346" y="33" class="t" fill="#fff" font-size="17" text-anchor="end">×</text>
+
+  <!-- sekmeler -->
+  <rect x="14" y="44" width="352" height="34" fill="#F1F3F5"/>
+  <text x="76" y="65" class="t muted" font-size="12.5" font-weight="600" text-anchor="middle">Kartlar</text>
+  <text x="190" y="65" class="t muted" font-size="12.5" font-weight="600" text-anchor="middle">Sistem</text>
+  <text x="304" y="65" class="t" fill="#1689CA" font-size="12.5" font-weight="700" text-anchor="middle">Ayarlar</text>
+  <rect x="268" y="75" width="72" height="2.5" fill="#1689CA"/>
+  <line x1="14" y1="78" x2="366" y2="78" stroke="#E6EAED"/>
+
+  <!-- toggle helper: yeşil açık -->
+  <!-- satır 1 -->
+  <text x="30" y="104" class="t lab">Windows ile başlat</text>
+  <text x="30" y="119" class="t desc">UYAP köprüsü arka planda hazır olur.</text>
+  <rect x="320" y="98" width="30" height="17" rx="8.5" fill="#28B463"/><circle cx="341.5" cy="106.5" r="6.5" fill="#fff"/>
+  <line x1="30" y1="132" x2="350" y2="132" stroke="#EEF1F3"/>
+
+  <!-- satır 2 -->
+  <text x="30" y="152" class="t lab">Boot'ta sessiz başla</text>
+  <text x="30" y="167" class="t desc">Açılışta pencere gelmez; yalnız tepside durur.</text>
+  <rect x="320" y="146" width="30" height="17" rx="8.5" fill="#28B463"/><circle cx="341.5" cy="154.5" r="6.5" fill="#fff"/>
+  <line x1="30" y1="180" x2="350" y2="180" stroke="#EEF1F3"/>
+
+  <!-- satır 3 -->
+  <text x="30" y="200" class="t lab">Otomatik güncelleme</text>
+  <text x="30" y="215" class="t desc">Yeni sürüm çıkınca bildirir (imzayla doğrulanır).</text>
+  <rect x="320" y="194" width="30" height="17" rx="8.5" fill="#28B463"/><circle cx="341.5" cy="202.5" r="6.5" fill="#fff"/>
+  <line x1="30" y1="228" x2="350" y2="228" stroke="#EEF1F3"/>
+
+  <!-- satır 4 -->
+  <text x="30" y="248" class="t lab">Kurulum görünürlüğü</text>
+  <text x="30" y="263" class="t desc">Hash'li makine kimliği + sürüm. PIN/kimlik GÖNDERMEZ.</text>
+  <rect x="320" y="242" width="30" height="17" rx="8.5" fill="#28B463"/><circle cx="341.5" cy="250.5" r="6.5" fill="#fff"/>
+  <line x1="30" y1="276" x2="350" y2="276" stroke="#EEF1F3"/>
+
+  <!-- satır 5: dil -->
+  <text x="30" y="296" class="t lab">Dil / Language</text>
+  <text x="30" y="311" class="t desc">Tüm pencereler ve menü anında güncellenir.</text>
+  <rect x="296" y="288" width="56" height="22" rx="6" fill="#fff" stroke="#E6EAED"/>
+  <text x="304" y="303" class="t ink" font-size="11.5">Türkçe</text>
+  <path d="M343 298 l4 4 4-4" stroke="#6B7176" stroke-width="1.4" fill="none"/>
+
+  <!-- kaldır bölümü -->
+  <line x1="30" y1="330" x2="350" y2="330" stroke="#E6EAED" stroke-width="2"/>
+  <text x="30" y="352" class="t" fill="#E5484D" font-weight="700" font-size="12.5">Sello'yu kaldır</text>
+  <text x="30" y="367" class="t desc">Autostart, yerel veri ve uygulamayı TAMAMEN siler.</text>
+  <rect x="300" y="344" width="52" height="24" rx="6" fill="#E5484D"/>
+  <text x="326" y="360" class="t" fill="#fff" font-size="11.5" font-weight="700" text-anchor="middle">Kaldır</text>
+
+  <!-- footer -->
+  <line x1="14" y1="430" x2="366" y2="430" stroke="#E6EAED"/>
+  <rect x="244" y="442" width="56" height="26" rx="6" fill="#C2CBD2"/>
+  <text x="272" y="459" class="t" fill="#3C4043" font-size="12" font-weight="700" text-anchor="middle">Kapat</text>
+  <rect x="306" y="442" width="46" height="26" rx="6" fill="#28B463"/>
+  <text x="329" y="459" class="t" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">Kaydet</text>
+</svg>

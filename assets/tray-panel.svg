@@ -1,0 +1,55 @@
+<svg width="380" height="480" viewBox="0 0 380 480" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sello tepsi paneli — Takılı Kartlar sekmesi">
+  <defs>
+    <filter id="sh" x="-8%" y="-6%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#0b3a55" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+  <style>
+    .t{font-family:"Segoe UI",system-ui,sans-serif}
+    .muted{fill:#9AA0A6}.ink{fill:#3C4043}.lbl{fill:#5A6166;font-weight:600}
+  </style>
+
+  <rect x="14" y="10" width="352" height="458" rx="12" fill="#ffffff" filter="url(#sh)"/>
+
+  <!-- başlık -->
+  <path d="M14 22a12 12 0 0 1 12-12h328a12 12 0 0 1 12 12v22H14z" fill="#1689CA"/>
+  <text x="30" y="32" class="t" fill="#fff" font-size="14.5" font-weight="700">Sello</text>
+  <text x="346" y="33" class="t" fill="#fff" font-size="17" text-anchor="end">×</text>
+
+  <!-- sekmeler -->
+  <rect x="14" y="44" width="352" height="34" fill="#F1F3F5"/>
+  <text x="76" y="65" class="t" fill="#1689CA" font-size="12.5" font-weight="700" text-anchor="middle">Kartlar</text>
+  <rect x="40" y="75" width="72" height="2.5" fill="#1689CA"/>
+  <text x="190" y="65" class="t muted" font-size="12.5" font-weight="600" text-anchor="middle">Sistem</text>
+  <text x="304" y="65" class="t muted" font-size="12.5" font-weight="600" text-anchor="middle">Ayarlar</text>
+  <line x1="14" y1="78" x2="366" y2="78" stroke="#E6EAED"/>
+
+  <!-- kart kutusu -->
+  <rect x="28" y="96" width="324" height="208" rx="9" fill="#FBFCFD" stroke="#E6EAED"/>
+  <text x="42" y="120" class="t" fill="#1689CA" font-size="13" font-weight="700">ACS ACR39U ICC Reader 0</text>
+
+  <!-- satırlar -->
+  <text x="42" y="150" class="t muted" font-size="12">Durum</text>
+  <circle cx="138" cy="146" r="4" fill="#28B463"/>
+  <text x="148" y="150" class="t" fill="#28B463" font-size="12" font-weight="700">Hazır</text>
+
+  <text x="42" y="178" class="t muted" font-size="12">Kart Sahibi</text>
+  <text x="138" y="178" class="t ink" font-size="12" font-weight="600">MEHMET GİLİK</text>
+
+  <text x="42" y="206" class="t muted" font-size="12">T.C. Kimlik No</text>
+  <text x="138" y="206" class="t ink" font-size="12">11111111111</text>
+
+  <text x="42" y="234" class="t muted" font-size="12">Veren Kurum</text>
+  <text x="138" y="234" class="t ink" font-size="12">Eimzatr SHS — Sürüm 3</text>
+
+  <text x="42" y="262" class="t muted" font-size="12">Geçerlilik</text>
+  <text x="138" y="262" class="t ink" font-size="12">16.04.2025 – 16.04.2028</text>
+
+  <line x1="42" y1="280" x2="338" y2="280" stroke="#EEF1F3"/>
+  <text x="42" y="297" class="t muted" font-size="11">Kart takılı · login/PIN gerekmeden okunur</text>
+
+  <!-- footer -->
+  <line x1="14" y1="430" x2="366" y2="430" stroke="#E6EAED"/>
+  <rect x="288" y="442" width="64" height="26" rx="6" fill="#C2CBD2"/>
+  <text x="320" y="459" class="t" fill="#3C4043" font-size="12" font-weight="700" text-anchor="middle">Yenile</text>
+</svg>
