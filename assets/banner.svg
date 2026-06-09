@@ -1,4 +1,4 @@
-<svg width="940" height="240" viewBox="0 0 940 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sello — e-Devlet e-İmza">
+<svg width="940" height="240" viewBox="0 0 940 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sello — e-Devlet ve UYAP e-İmza">
   <defs>
     <linearGradient id="bdisk" x1="40" y1="40" x2="200" y2="200" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#2ba3e0"/>
@@ -19,7 +19,7 @@
   <text x="250" y="118" font-family="Segoe UI, system-ui, -apple-system, sans-serif"
         font-size="92" font-weight="800" fill="#1689CA" letter-spacing="-2">Sello</text>
   <text x="254" y="168" font-family="Segoe UI, system-ui, -apple-system, sans-serif"
-        font-size="27" font-weight="600" fill="#7c8a96">e-Devlet e-İmza · hızlı · tek dosya · Java'sız</text>
+        font-size="26" font-weight="600" fill="#7c8a96">e-Devlet & UYAP e-İmza · Java'sız · tek dosya</text>
   <text x="256" y="205" font-family="Consolas, ui-monospace, monospace"
-        font-size="17" fill="#9aa6b0">e-Devlet e-imza uygulamasının hafif muadili</text>
+        font-size="16" fill="#9aa6b0">Avukat, bilirkişi ve vatandaşlar için bağımsız e-imza uygulaması</text>
 </svg>

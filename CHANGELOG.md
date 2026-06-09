@@ -14,11 +14,11 @@ Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 - **Tam Türkçe / İngilizce** arayüz; dil değişimi tüm pencerelere ve tepsi menüsüne **anında** yansır.
 - Arka planda kararlılık: kalıcı teşhis günlüğü; kart sürücüsü yoklaması hafifletilip çökmeye karşı korumalı hale getirildi.
 
-## [0.1.8] — e-Adalet / UYAP desteği
-- **e-Adalet (UYAP) tarayıcı imzası:** Sello tepside resident çalışır ve yerel bir imza köprüsü
-  (127.0.0.1) açar; UYAP sayfalarındaki kartlı imza buradan alınır. Resmî "Adalet E-imza"
-  istemcisinin muadili — resmî istemci kuruluysa çakışmamak için devre dışı kalır.
-- e-Devlet ve e-Adalet artık **tek uygulamada** birleşik.
+## [0.1.8] — UYAP (e-Adalet) desteği
+- **UYAP (e-Adalet) tarayıcı imzası:** Sello tepside resident çalışır ve yerel bir imza köprüsü
+  (127.0.0.1) açar; UYAP portallarındaki kartlı imza buradan alınır — **UYAP E-İmza** istemcisine
+  bağımsız bir alternatif. UYAP E-İmza kuruluysa çakışmamak için köprü devre dışı kalır.
+- e-Devlet ve UYAP artık **tek uygulamada** birleşik.
 
 ## [0.1.7]
 - **Kullanım Sözleşmesi (EULA)** eklendi: ilk açılışta sözleşme (TR + EN) gösterilir, **kabul
