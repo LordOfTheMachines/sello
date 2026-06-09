@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lordofthemachines.github.io/sello/sitemap.xml

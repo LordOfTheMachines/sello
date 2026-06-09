@@ -1,0 +1,59 @@
+<svg width="380" height="420" viewBox="0 0 380 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sello Sistem Kontrolü — e-Adalet ve e-Devlet">
+  <defs>
+    <filter id="sh4" x="-8%" y="-6%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#0b3a55" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+  <style>
+    .t{font-family:"Segoe UI",system-ui,sans-serif}
+    .muted{fill:#9AA0A6}.ink{fill:#3C4043}
+    .grp{fill:#1689CA;font-size:10.5px;font-weight:700;letter-spacing:.4px}
+    .name{fill:#2F3437;font-weight:600;font-size:12.5px}
+    .det{fill:#9AA0A6;font-size:11.5px}
+  </style>
+
+  <rect x="14" y="10" width="352" height="398" rx="12" fill="#ffffff" filter="url(#sh4)"/>
+
+  <!-- başlık -->
+  <path d="M14 22a12 12 0 0 1 12-12h328a12 12 0 0 1 12 12v22H14z" fill="#1689CA"/>
+  <text x="30" y="32" class="t" fill="#fff" font-size="14.5" font-weight="700">Sello</text>
+  <text x="346" y="33" class="t" fill="#fff" font-size="17" text-anchor="end">×</text>
+
+  <!-- sekmeler -->
+  <rect x="14" y="44" width="352" height="34" fill="#F1F3F5"/>
+  <text x="76" y="65" class="t muted" font-size="12.5" font-weight="600" text-anchor="middle">Kartlar</text>
+  <text x="190" y="65" class="t" fill="#1689CA" font-size="12.5" font-weight="700" text-anchor="middle">Sistem</text>
+  <rect x="154" y="75" width="72" height="2.5" fill="#1689CA"/>
+  <text x="304" y="65" class="t muted" font-size="12.5" font-weight="600" text-anchor="middle">Ayarlar</text>
+  <line x1="14" y1="78" x2="366" y2="78" stroke="#E6EAED"/>
+
+  <!-- grup: e-Adalet -->
+  <text x="30" y="106" class="t grp">E-ADALET / UYAP</text>
+  <line x1="30" y1="114" x2="350" y2="114" stroke="#E6EAED" stroke-width="2"/>
+  <circle cx="36" cy="136" r="5.5" fill="#28B463"/>
+  <text x="50" y="140" class="t name">UYAP köprüsü</text>
+  <text x="350" y="140" class="t det" text-anchor="end">Çalışıyor · 127.0.0.1:5975</text>
+  <circle cx="36" cy="164" r="5.5" fill="#28B463"/>
+  <text x="50" y="168" class="t name">e-Adalet sunucusu</text>
+  <text x="350" y="168" class="t det" text-anchor="end">Erişilebilir</text>
+
+  <!-- grup: e-Devlet -->
+  <text x="30" y="206" class="t grp">E-DEVLET</text>
+  <line x1="30" y1="214" x2="350" y2="214" stroke="#E6EAED" stroke-width="2"/>
+  <circle cx="36" cy="236" r="5.5" fill="#28B463"/>
+  <text x="50" y="240" class="t name">Sürüm kontrolü</text>
+  <text x="350" y="240" class="t det" text-anchor="end">Bağlantı tamam</text>
+  <circle cx="36" cy="264" r="5.5" fill="#28B463"/>
+  <text x="50" y="268" class="t name">Kayıt kontrolü</text>
+  <text x="350" y="268" class="t det" text-anchor="end">Bağlantı tamam</text>
+  <circle cx="36" cy="292" r="5.5" fill="#28B463"/>
+  <text x="50" y="296" class="t name">İmza girişi</text>
+  <text x="350" y="296" class="t det" text-anchor="end">Bağlantı tamam</text>
+
+  <text x="30" y="338" class="t det">Her iki sistemin bağlantısı tek ekranda.</text>
+
+  <!-- footer -->
+  <line x1="14" y1="370" x2="366" y2="370" stroke="#E6EAED"/>
+  <rect x="266" y="382" width="86" height="26" rx="6" fill="#C2CBD2"/>
+  <text x="309" y="399" class="t" fill="#3C4043" font-size="12" font-weight="700" text-anchor="middle">Yeniden Dene</text>
+</svg>

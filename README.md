@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="Sello — e-Devlet e-İmza" width="640" />
+  <img src="assets/banner.svg" alt="Sello — e-Devlet ve e-Adalet (UYAP) e-İmza" width="640" />
 </p>
 
 <p align="center">
-  <b>E-Devlet'in resmî e-imza uygulamasının hafif muadili — tek dosya e-imza giriş uygulaması.</b><br/>
-  Java / JVM / Web Start <b>gerektirmez</b> — Windows'un yerleşik tarayıcı motorunu (WebView2) kullanır.
+  <b>e-Devlet e-imza girişi ile e-Adalet (UYAP) kartlı imzayı TEK uygulamada toplayan, Java'sız, tek dosya Windows e-imza uygulaması.</b><br/>
+  Resmî <b>elektronik-imza.jar</b> ve <b>"Adalet E-imza"</b> istemcisinin hafif, kendini güncelleyen muadili — Windows'un yerleşik WebView2 motorunu kullanır.
 </p>
 
 <p align="center">
@@ -22,10 +22,19 @@
 </p>
 
 <p align="center">
-  <img src="assets/shot-giris.png" alt="Sello giriş ekranı" width="680" />
+  <img src="assets/shot-giris.png" alt="Sello e-Devlet e-imza giriş ekranı" width="680" />
 </p>
 
 ---
+
+## 🎯 İki sistem, tek uygulama
+
+Sello, iki ayrı resmî e-imza istemcisinin işini tek programda görür — ikisi için ayrı yazılım kurmanıza gerek kalmaz:
+
+| | |
+|---|---|
+| 🏛️ **e-Devlet e-İmza** | Tarayıcıda "e-imza ile giriş" adımını Sello penceresi üstlenir: kartı okur, sözleşmeyi gösterir, PIN'inizle imzalar, girişi tamamlar. *(elektronik-imza.jar muadili — Java yok.)* |
+| ⚖️ **e-Adalet / UYAP** | Sello arka planda tepside durur ve yerel bir imza köprüsü açar; UYAP sayfalarındaki imza kartınızla bu köprüden alınır. *(Resmî "Adalet E-imza" istemcisinin muadili.)* Resmî istemci kuruluysa çakışmamak için köprü devre dışı kalır. |
 
 ## ✨ Öne çıkanlar
 
@@ -33,8 +42,11 @@
 |---|---|
 | ⚡ **Java'sız & hızlı** | JVM, Web Start veya Python yok. Çift tıkla saniyeler içinde açılır. |
 | 📦 **Tek dosya, taşınabilir** | Tek `.exe`. Kurulum gerekmez; USB'den bile çalışır. |
-| 🔄 **Otomatik güncelleme** | Açılışta yeni sürümü görür, **dijital imzayla doğrular**, kendini yeniler. |
-| 🛡️ **Kart güvenliği** | PIN sayacını düşürmeden okur; **son deneme hakkında** otomatik giriş yapmaz, uyarır. Kilitli/boş/yanlış-uzunluk PIN gönderilmez. |
+| 🖥️ **Sistem tepsisinde arka planda** | Sol çift-tık → e-Devlet penceresi. Sağ-tık → **Takılı Kartlar · Sistem Kontrolü · Ayarlar** (tek pencere, sekmeli). |
+| ⚙️ **Tam kullanıcı kontrolü** | "Windows ile başlat" Ayarlar'dan açılıp kapatılır; **kendini kaldırma** ile tüm izler temizlenir. |
+| 🌐 **Türkçe / İngilizce** | Dil değişimi tüm pencerelere ve tepsi menüsüne **anında** yansır. |
+| 🔄 **İmzalı otomatik güncelleme** | Açılışta yeni sürümü görür, **ed25519 imzasıyla doğrular**, kendini yeniler. |
+| 🛡️ **Kart güvenliği** | PIN sayacını düşürmeden okur; **son deneme hakkında** otomatik giriş yapmaz. Kilitli/boş PIN gönderilmez. |
 | 🔒 **TLS her zaman açık** | Sertifika doğrulaması kapatılmaz; PIN ve imzalı veri loglanmaz. |
 | ✅ **Standart imza** | PKCS#11 (AKİS doğrulandı) + CAdES-BES CMS; openssl ile doğrulandı. |
 
@@ -52,23 +64,39 @@
 
 ## 🚀 Kullanım
 
-1. **Kartı tak**, uygulamayı aç.
+**e-Devlet'e giriş (dört adım):**
+
+1. Kartı tak; tepsi simgesine **çift tıkla** Sello penceresini aç.
 2. **Kart Tipi** seç + tarayıcıdaki **İşlem Kodu**'nu gir → **DEVAM**.
 3. **Sözleşme**yi gör → **DEVAM** → **PIN** gir → **İMZALA**.
 4. e-Devlet girişin tamamlanır.
 
+**e-Adalet (UYAP) için:** Sello tepside açık olduğu sürece ekstra adım yok — tarayıcıdaki UYAP
+imza penceresinde kartınız ve PIN'inizle imzalarsınız; Sello köprüsü imzayı arka planda üretir.
+
+**Tepsi menüsü (sağ-tık):**
+
+- **Takılı Kartlar** — kart sahibi, T.C. kimlik no, veren kurum, geçerlilik ve PIN durumu (login gerekmeden).
+- **Sistem Kontrolü** — e-Adalet/UYAP (köprü + sunucu) ve e-Devlet bağlantılarını tek ekranda raporlar.
+- **Ayarlar** — Windows ile başlat · sessiz boot · otomatik güncelleme · kurulum görünürlüğü · dil (TR/EN) · **Sello'yu kaldır**.
+
 ## 🔄 Güncelleme
 
-Uygulama açılışta yeni sürüm olup olmadığını kontrol eder; varsa **"Güncelle"** ile
-kendini günceller (ed25519 **dijital imzayla doğrulanır**). Tek dosya portable sürüm de
-kendini yeniler — installer gerekmez.
+Uygulama açılışta yeni sürüm olup olmadığını kontrol eder; varsa **"Güncelle"** ile kendini
+günceller (ed25519 **dijital imzayla doğrulanır**). Tek dosya portable sürüm de kendini yeniler.
+
+## 🗑️ Kaldırma
+
+Tepsi → **Ayarlar → "Sello'yu kaldır"**: autostart kaydı, yerel veri ve uygulama makineden
+**tamamen** kaldırılır. (Yalnız başlangıçtan çıkarmak isterseniz "Windows ile başlat"ı kapatmanız yeter.)
 
 ## 🔒 Güvenlik ve gizlilik
 
 - **TLS doğrulaması her zaman açık**; PIN loglanmaz, bellekte kısa tutulup silinir.
-- Kart **kilitliyse** veya **son deneme hakkındaysa** giriş otomatik denenmez; bunun yerine
-  uyarı verilir (kartı kalıcı kilitlememek için). Boş/yanlış-uzunluk PIN gönderilmez.
+- Kart **kilitliyse** veya **son deneme hakkındaysa** giriş otomatik denenmez; uyarı verilir (kartı
+  kalıcı kilitlememek için). Boş/yanlış-uzunluk PIN gönderilmez.
 - İmza **kartın içinde** üretilir; kartın özel anahtarı hiçbir zaman dışarı çıkmaz.
+- UYAP köprüsü yalnız **127.0.0.1**'de ve yalnız **onaylı UYAP alan adlarına** açıktır.
 
 ## 📋 Sürüm geçmişi
 
@@ -84,5 +112,5 @@ kullanım içindir; **yeniden dağıtım yasaktır** (yalnız resmî kaynaktan i
 ---
 
 <p align="center"><sub>
-Kişisel/kontrollü dağıtım. Kaynak kod ayrı tutulur; bu depo yalnız dağıtım içindir.
+© Mehmet Gilik · Kişisel/kontrollü dağıtım. Kaynak kod ayrı tutulur; bu depo yalnız dağıtım içindir.
 </sub></p>
