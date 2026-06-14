@@ -50,6 +50,12 @@
     .del:hover { text-decoration:underline; }
     tr.stale td { opacity:0.42; }                /* 14+ gündür görülmeyen makineler soluk */
     tr.stale td .pill { background:#eee; color:#888; }
+    .actions { white-space:nowrap; text-align:right; }
+    .actions button { font-size:12px; padding:3px 8px; margin-left:4px; }
+    button.block { color:#b3261e; border-color:#f0c4c0; }
+    button.priv { color:#1e6b3a; border-color:#bfe3cd; }
+    tr.priv-row td { background:#eafaf1; }
+    tr.blocked-row td { background:#fdecea; }     /* engelli satır (yetki rengini ezsin diye sonra) */
   </style>
 </head>
 <body>
@@ -91,7 +97,7 @@
           <th data-k="open_count">Açılış</th>
           <th data-k="first_seen">İlk görülme</th>
           <th data-k="last_seen">Son görülme</th>
-          <th></th>
+          <th>Eylem</th>
         </tr>
       </thead>
       <tbody id="rows"></tbody>
@@ -102,7 +108,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged }
       from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-    import { getFirestore, collection, onSnapshot, deleteDoc, doc }
+    import { getFirestore, collection, onSnapshot, deleteDoc, doc, updateDoc, arrayUnion, arrayRemove }
       from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
     const firebaseConfig = {
@@ -120,21 +126,33 @@
     const $ = (id) => document.getElementById(id);
     let data = [];
     let sortKey = "last_seen", sortDir = -1;
-    let unsub = null;
+    let unsub = null, unsubAccess = null;
+    let blockedSet = new Set(), privSet = new Set();   // config/access (engelli/yetkili) canlı durumu
 
     $("signinBtn").onclick = () =>
       signInWithPopup(auth, new GoogleAuthProvider()).catch(e => $("msg").textContent = e.message);
     $("signoutBtn").onclick = () => signOut(auth);
     $("refreshBtn").onclick = render;
     $("search").addEventListener("input", render);
-    // Satır silme (yalnız sahibin; kurallarla korunur). Eski/test kayıtlarını temizlemek için.
+    // Satır eylemleri (yalnız sahibin; hepsi Firestore kurallarıyla korunur):
+    //  • Sil → kurulumlar kaydını siler.  • Engelle/Özel yetki → config/access listelerini günceller.
     $("rows").addEventListener("click", async (e) => {
-      const btn = e.target.closest("button.del");
+      const btn = e.target.closest("button[data-id]");
       if (!btn) return;
-      const id = btn.dataset.id, label = btn.dataset.label || id;
-      if (!confirm(label + " kaydını silmek istiyor musun?")) return;
-      try { await deleteDoc(doc(db, "kurulumlar", id)); }
-      catch (err) { alert("Silinemedi (yetki?): " + err.message); }
+      const id = btn.dataset.id;
+      try {
+        if (btn.classList.contains("del")) {
+          const label = btn.dataset.label || id;
+          if (!confirm(label + " kaydını silmek istiyor musun?")) return;
+          await deleteDoc(doc(db, "kurulumlar", id));
+        } else if (btn.classList.contains("block")) {
+          const op = blockedSet.has(id) ? arrayRemove(id) : arrayUnion(id);
+          await updateDoc(doc(db, "config", "access"), { blocked_ids: op });
+        } else if (btn.classList.contains("priv")) {
+          const op = privSet.has(id) ? arrayRemove(id) : arrayUnion(id);
+          await updateDoc(doc(db, "config", "access"), { privileged_ids: op });
+        }
+      } catch (err) { alert("İşlem başarısız (yetki?): " + err.message); }
     });
     document.querySelectorAll("th[data-k]").forEach(th => th.onclick = () => {
       const k = th.dataset.k;
@@ -155,8 +173,16 @@
           data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
           stats(); render();
         }, (e) => { $("msg").textContent = "Okuma hatası (yetki?): " + e.message; });
-      } else if (unsub) {
-        unsub(); unsub = null;
+        // Engel/yetki listelerini canlı izle → Engelle/Özel-yetki düğmeleri durumu yansıtsın.
+        unsubAccess = onSnapshot(doc(db, "config", "access"), (snap) => {
+          const f = snap.exists() ? snap.data() : {};
+          blockedSet = new Set(f.blocked_ids || []);
+          privSet = new Set(f.privileged_ids || []);
+          render();
+        }, () => {});
+      } else {
+        if (unsub) { unsub(); unsub = null; }
+        if (unsubAccess) { unsubAccess(); unsubAccess = null; }
       }
     });
 
@@ -194,8 +220,12 @@
       $("rows").innerHTML = rows.map(d => {
         const ls = tsMillis(d.last_seen);
         const stale = ls && (Date.now() - ls > STALE);
+        const blocked = blockedSet.has(d.id), priv = privSet.has(d.id);
+        const cls = [stale ? "stale" : "", priv ? "priv-row" : "", blocked ? "blocked-row" : ""]
+          .filter(Boolean).join(" ");
+        const label = esc(d.license_code || d.hostname || d.id);
         return `
-        <tr class="${stale ? "stale" : ""}">
+        <tr class="${cls}">
           <td class="mono"><span class="pill">${esc(d.license_code) || "—"}</span></td>
           <td>${esc(d.hostname) || "—"}</td>
           <td class="muted">${esc(d.username) || "—"}</td>
@@ -203,7 +233,11 @@
           <td>${Number(d.open_count) || 0}</td>
           <td>${fmt(d.first_seen)}</td>
           <td>${fmt(d.last_seen)}</td>
-          <td><button class="del" data-id="${esc(d.id)}" data-label="${esc(d.license_code || d.hostname || d.id)}">Sil</button></td>
+          <td class="actions">
+            <button class="block" data-id="${esc(d.id)}">${blocked ? "Engeli kaldır" : "Engelle"}</button>
+            <button class="priv" data-id="${esc(d.id)}">${priv ? "Yetkiyi al" : "Özel yetki"}</button>
+            <button class="del" data-id="${esc(d.id)}" data-label="${label}">Sil</button>
+          </td>
         </tr>`;
       }).join("");
     }
