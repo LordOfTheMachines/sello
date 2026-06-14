@@ -207,8 +207,8 @@
         </tr>`;
       }).join("");
     }
-    function esc(s) { return (s == null ? "" : String(s)).replace(/[<>&]/g, c =>
-      ({ "<": "&lt;", ">": "&gt;", "&": "&amp;" }[c])); }
+    function esc(s) { return (s == null ? "" : String(s)).replace(/[<>&"']/g, c =>
+      ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;", "'": "&#39;" }[c])); }
 
     // CSV dışa aktar (Excel uyumlu, UTF-8 BOM'lu).
     $("csvBtn").onclick = () => {
