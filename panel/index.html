@@ -52,8 +52,12 @@
     tr.stale td .pill { background:#eee; color:#888; }
     .actions { white-space:nowrap; text-align:right; }
     .actions button { font-size:12px; padding:3px 8px; margin-left:4px; }
-    button.block { color:#b3261e; border-color:#f0c4c0; }
-    button.priv { color:#1e6b3a; border-color:#bfe3cd; }
+    /* Sabit genişlik: "Engelle"/"Engeli kaldır" ve "Yetki ver"/"Yetki al" aynı yeri kaplar →
+       etiket değişse de Sil sütunu satırlar arası hizalı kalır. */
+    .actions .block, .actions .priv { min-width:96px; text-align:center; }
+    .btn-red { color:#b3261e; border-color:#f0c4c0; }     /* erişimi KALDIRAN eylem */
+    .btn-green { color:#1e6b3a; border-color:#bfe3cd; }   /* erişim VEREN/geri-getiren eylem */
+    .old-note { color:var(--muted); font-size:12px; margin-right:6px; }
     tr.priv-row td { background:#eafaf1; }
     tr.blocked-row td { background:#fdecea; }     /* engelli satır (yetki rengini ezsin diye sonra) */
   </style>
@@ -195,6 +199,13 @@
       const ms = tsMillis(v); if (!ms) return "—";
       return new Date(ms).toLocaleString("tr-TR");
     }
+    // "0.4.0" gibi sürüm karşılaştırması: v >= min mi? (eksik/bozuk sürüm → false = eski say.)
+    function verGte(v, min) {
+      const p = String(v == null ? "" : v).split(".").map(n => parseInt(n, 10) || 0);
+      const m = min.split(".").map(n => parseInt(n, 10) || 0);
+      for (let i = 0; i < 3; i++) { const a = p[i] || 0, b = m[i] || 0; if (a !== b) return a > b; }
+      return true;
+    }
 
     function stats() {
       const now = Date.now(), week = 7 * 864e5;
@@ -224,6 +235,16 @@
         const cls = [stale ? "stale" : "", priv ? "priv-row" : "", blocked ? "blocked-row" : ""]
           .filter(Boolean).join(" ");
         const label = esc(d.license_code || d.hostname || d.id);
+        // Engelle/Yetki düğmeleri YALNIZ lisans kapısını taşıyan sürümlerde (>=0.4.0) anlamlı;
+        // eski sürümler config/access'i hiç okumaz → engel/yetki onlara işlemez, düğme gösterme.
+        // Renk = eylemin niteliği: erişim VEREN/geri-getiren yeşil, KALDIRAN kırmızı.
+        const manage = verGte(d.version, "0.4.0");
+        const actions = manage
+          ? `<button class="block ${blocked ? "btn-green" : "btn-red"}" data-id="${esc(d.id)}">${blocked ? "Engeli kaldır" : "Engelle"}</button>
+            <button class="priv ${priv ? "btn-red" : "btn-green"}" data-id="${esc(d.id)}">${priv ? "Yetki al" : "Yetki ver"}</button>
+            <button class="del" data-id="${esc(d.id)}" data-label="${label}">Sil</button>`
+          : `<span class="old-note">eski sürüm</span>
+            <button class="del" data-id="${esc(d.id)}" data-label="${label}">Sil</button>`;
         return `
         <tr class="${cls}">
           <td class="mono"><span class="pill">${esc(d.license_code) || "—"}</span></td>
@@ -233,11 +254,7 @@
           <td>${Number(d.open_count) || 0}</td>
           <td>${fmt(d.first_seen)}</td>
           <td>${fmt(d.last_seen)}</td>
-          <td class="actions">
-            <button class="block" data-id="${esc(d.id)}">${blocked ? "Engeli kaldır" : "Engelle"}</button>
-            <button class="priv" data-id="${esc(d.id)}">${priv ? "Yetkiyi al" : "Özel yetki"}</button>
-            <button class="del" data-id="${esc(d.id)}" data-label="${label}">Sil</button>
-          </td>
+          <td class="actions">${actions}</td>
         </tr>`;
       }).join("");
     }
