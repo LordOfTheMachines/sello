@@ -2,6 +2,24 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.5.0] — PTT KEP webmail e-imza desteği
+- **PTT KEP webmail e-imzası** eklendi: pencerede üstten **KEP / e-Devlet** geçişi. PTT KEP
+  webmail'de gördüğünüz **İşlem Kodu** ile kartınız ve PIN'inizle giriş imzası — akış e-Devlet
+  ile aynıdır (gerçek kartla doğrulandı).
+- **Sistem Kontrolü**ne **PTT KEP** sunucu kontrolü eklendi (yeşil/kırmızı ışık).
+- Bağlantı durumları daha anlaşılır metinlerle gösterilir ("Bağlantı sağlandı/kurulamadı");
+  Türkçe ⇄ İngilizce dil geçişi iyileştirildi.
+
+## [0.4.0] — Sürüm/bakım koruması ve kararlılık
+- e-İmza sisteminde bakım/güncelleme olduğunda kullanıcıyı bilgilendiren koruma; çeşitli
+  kararlılık iyileştirmeleri.
+
+## [0.3.1] — EC (ECDSA) kart desteği + sunucu saatli imza zamanı
+- **EC (ECDSA, P-256/P-384) e-imza kartları** desteklendi; imza zamanı sunucu saatinden alınır.
+
+## [0.3.0] — UYAP Bilirkişi Portalı belge imzası
+- **UYAP Bilirkişi Portalı** belge imzası (signdigest) eklendi; tutanak/belge kartla imzalanır.
+
 ## [0.2.0] — Tepsi paneli, ayarlar ve kendini-kaldırma
 - **Sistem tepsisi paneli (tek pencere, sekmeli):** sağ-tık → **Takılı Kartlar · Sistem Kontrolü ·
   Ayarlar**. Tepsiye **sol çift-tık** doğrudan e-Devlet imza penceresini açar.
