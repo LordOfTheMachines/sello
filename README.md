@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="Sello — e-Devlet, UYAP (e-Adalet) ve PTT KEP e-İmza" width="640" />
+  <img src="assets/banner.svg" alt="Sello — e-Devlet, UYAP (e-Adalet), PTT KEP ve UETS (e-Tebligat) e-İmza" width="640" />
 </p>
 
 <p align="center">
-  <b>e-Devlet'e, UYAP'a (e-Adalet) ve PTT KEP'e akıllı kart e-imzanızla girişi TEK uygulamada toplayan, Java'sız, tek dosya Windows uygulaması.</b><br/>
-  <b>e-Devlet e-İmza Uygulaması</b>, <b>UYAP E-İmza</b> ve <b>PTT KEP e-imza</b> aracının Java yükünü ortadan kaldıran <b>bağımsız</b>, hafif, kendini güncelleyen bir alternatif.
+  <b>e-Devlet'e, UYAP'a (e-Adalet), PTT KEP'e ve UETS / e-Tebligat'a akıllı kart e-imzanızla girişi TEK uygulamada toplayan, Java'sız, tek dosya Windows uygulaması.</b><br/>
+  <b>e-Devlet e-İmza Uygulaması</b>, <b>UYAP E-İmza</b>, <b>PTT KEP</b> ve <b>UETS (e-Tebligat)</b> e-imza aracının Java yükünü ortadan kaldıran <b>bağımsız</b>, hafif, kendini güncelleyen bir alternatif.
 </p>
 
 <p align="center">
@@ -36,16 +36,18 @@ Her gün **UYAP** ve **e-Devlet**'e e-imzayla giren herkes için — Java derdi 
 - **Bilirkişiler & arabulucular** — Bilirkişi/Arabulucu Portallarına e-imzayla giriş.
 - **Vatandaşlar** — e-Devlet'e elektronik imza ile güvenli giriş.
 - **KEP kullanıcıları** — PTT KEP webmail'e (Kayıtlı Elektronik Posta) e-imzayla güvenli giriş.
+- **e-Tebligat kullanıcıları** — UETS (Ulusal Elektronik Tebligat Sistemi) / e-Tebligat'a e-imzayla giriş.
 
-## 🎯 Üç sistem, tek uygulama
+## 🎯 Dört sistem, tek uygulama
 
-Üç ayrı e-imza istemcisinin yaptığı işi Sello tek başına görür — ayrı program ve Java kurmazsınız:
+Dört ayrı e-imza istemcisinin yaptığı işi Sello tek başına görür — ayrı program ve Java kurmazsınız:
 
 | | |
 |---|---|
 | 🏛️ **e-Devlet** | Tarayıcıda "Elektronik İmza ile Giriş" adımını Sello penceresi üstlenir: kartı okur, işlem kodunu alır, PIN'inizle imzalar, girişi tamamlar. *(e-Devlet e-İmza Uygulaması yerine — Java yok.)* |
 | ⚖️ **UYAP / e-Adalet** | Sello arka planda tepside durur ve yerel bir imza köprüsü açar; UYAP portallarındaki imza kartınızla bu köprüden alınır. *(UYAP E-İmza istemcisine alternatif.)* UYAP E-İmza kuruluysa çakışmamak için köprü devre dışı kalır. |
-| ✉️ **PTT KEP** | Pencerede **KEP / e-Devlet** anahtarıyla KEP'i seçersiniz: PTT KEP webmail'de gördüğünüz işlem kodunu girer, kartınız ve PIN'inizle imzalar, girişi tamamlarsınız. *(PTT KEP'in Java tabanlı e-imza aracına alternatif.)* |
+| ✉️ **PTT KEP** | Üstten **PTT KEP** modunu seçersiniz: PTT KEP webmail'de gördüğünüz işlem kodunu girer, kartınız ve PIN'inizle imzalar, girişi tamamlarsınız. *(PTT KEP'in Java tabanlı e-imza aracına alternatif.)* |
+| 📨 **UETS / e-Tebligat** | Üstten **UETS** modunu seçersiniz: UETS (Ulusal Elektronik Tebligat Sistemi) / e-Tebligat işleminde gördüğünüz 6 haneli işlem kodunu girer, kartınız ve PIN'inizle imzalarsınız. *(PTT UETS'in Java tabanlı e-imza aracına alternatif; RSA ve EC kart.)* |
 
 ## ✨ Öne çıkanlar
 
@@ -86,8 +88,11 @@ imza penceresinde kartınız ve PIN'inizle imzalarsınız; Sello köprüsü imza
 **PTT KEP webmail için:** pencerede üstten **KEP** moduna geçin; PTT KEP webmail'de gördüğünüz
 **İşlem Kodu**'nu girip kartınız ve PIN'inizle imzalayın — akış e-Devlet girişiyle aynıdır.
 
+**UETS / e-Tebligat için:** pencerede üstten **UETS** moduna geçin; e-Tebligat işleminde gördüğünüz
+**6 haneli İşlem Kodu**'nu girip kartınız ve PIN'inizle imzalayın — akış e-Devlet/KEP ile aynıdır.
+
 **Tepsi menüsü (sağ-tık):** **Takılı Kartlar** (sahip, kimlik no, geçerlilik, PIN durumu) ·
-**Sistem Kontrolü** (UYAP, e-Devlet ve PTT KEP bağlantıları) · **Ayarlar** (Windows ile başlat, dil TR/EN, kaldır).
+**Sistem Kontrolü** (UYAP, e-Devlet, PTT KEP ve UETS bağlantıları) · **Ayarlar** (Windows ile başlat, dil TR/EN, kaldır).
 
 ## 🗑️ Kaldırma
 
@@ -122,7 +127,7 @@ verilmez** ve tüm sorumluluk/risk kullanıcıdadır. Tam metin: **[LICENSE](LIC
 
 > **Bağımsızlık notu:** Sello bağımsız, üçüncü taraf bir uygulamadır; **TÜRKSAT**, **e-Devlet Kapısı**,
 > **T.C. Adalet Bakanlığı (UYAP)** veya **PTT (Posta ve Telgraf Teşkilatı A.Ş.)** ile resmî bir
-> bağlantısı, ortaklığı ya da onayı yoktur. "e-Devlet", "UYAP", "e-Adalet", "PTT KEP" ve anılan diğer
+> bağlantısı, ortaklığı ya da onayı yoktur. "e-Devlet", "UYAP", "e-Adalet", "PTT KEP", "UETS", "e-Tebligat" ve anılan diğer
 > ürün/marka adları yalnızca uyumluluğu açıklamak için kullanılmıştır ve ilgili sahiplerine aittir.
 
 <p align="center"><sub>© Mehmet Gilik · Bağımsız uygulama · Kaynak kod ayrı tutulur; bu depo yalnız dağıtım içindir.</sub></p>
