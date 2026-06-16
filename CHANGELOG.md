@@ -2,6 +2,14 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.6.0] — PTT UETS / e-Tebligat e-imza desteği
+- **PTT UETS (Ulusal Elektronik Tebligat Sistemi — e-Tebligat) e-imzası** eklendi: pencerede
+  üstten **e-Devlet / PTT KEP / UETS** geçişi (üçüncü mod). e-Tebligat işleminde gördüğünüz
+  **6 haneli İşlem Kodu** ile kartınız ve PIN'inizle imzalarsınız — akış e-Devlet/KEP ile aynıdır
+  (gerçek kartla doğrulandı). RSA ve EC (ECDSA) kartlar; CAdES-BES, sunucu saatli imza zamanı.
+- **Sistem Kontrolü**ne **UETS / e-Tebligat** sunucu kontrolü eklendi (yeşil/kırmızı ışık).
+- **e-Devlet ve PTT KEP modları aynen korundu** — mevcut akışlarda değişiklik yok.
+
 ## [0.5.0] — PTT KEP webmail e-imza desteği
 - **PTT KEP webmail e-imzası** eklendi: pencerede üstten **KEP / e-Devlet** geçişi. PTT KEP
   webmail'de gördüğünüz **İşlem Kodu** ile kartınız ve PIN'inizle giriş imzası — akış e-Devlet
