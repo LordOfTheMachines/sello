@@ -2,6 +2,16 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.8.0] — Daha akıcı imza + güven deposu izleme
+- **İmza akışı hızlandırıldı:** sertifika iptal kontrolü (CRL) artık kart kilidini tutmadan,
+  arka planda yapılıyor — yavaş veya soğuk ağda imza atarken bekleme belirgin biçimde azaldı.
+- **Güven deposu izleme:** Sello, Türk ESHS güven deposunun (KamuSM kök sertifika listesi)
+  güncellenip güncellenmediğini günde bir kez sessizce kontrol eder; bir değişiklik olursa
+  güncelleme gerektiğine dair işaret bırakır. Bir güvenlik kararı vermez, yalnız bilgilendirir;
+  TLS doğrulaması açıktır.
+- Çekirdek kod sadeleştirildi, test kapsamı genişledi. Çalışan tüm imza yolları
+  (**e-Devlet · UYAP · PTT KEP · UETS**) değişmeden korundu.
+
 ## [0.7.0] — İmza-öncesi sertifika güvenlik ön-filtresi
 - **Sertifika güvenlik ön-kontrolü** eklendi: e-imza atmadan önce sertifikanın **süresi** ve
   **iptal durumu (CRL)** sessizce kontrol edilir; geçersizse imza yapılmadan net uyarı verilir.
