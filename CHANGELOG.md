@@ -2,6 +2,17 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.7.0] — İmza-öncesi sertifika güvenlik ön-filtresi
+- **Sertifika güvenlik ön-kontrolü** eklendi: e-imza atmadan önce sertifikanın **süresi** ve
+  **iptal durumu (CRL)** sessizce kontrol edilir; geçersizse imza yapılmadan net uyarı verilir.
+  **e-Devlet, UYAP, PTT KEP ve UETS** modlarının hepsinde geçerli.
+- **Takılı Kartlar**'da geçerlilik renk gradyanı: son 3 ay **sarı** → 2 ay **turuncu** → 1 ay
+  **açık kırmızı** → dolmuş **koyu kırmızı**.
+- Güvenli tasarım: kök sertifikalar uygulamaya **gömülü**, kontrol **yalnız bellekte** (disk yok),
+  CRL imzası CA ile doğrulanır; **"fail-open"** (yalnız kesin dolmuş/iptalli durdurur; kontrol
+  yapılamazsa imza engellenmez, son merci sunucudur).
+- e-Devlet ↔ KEP ↔ UETS geçişlerinde form artık **sabit pozisyonda** kalır (hizalama düzeltmesi).
+
 ## [0.6.0] — PTT UETS / e-Tebligat e-imza desteği
 - **PTT UETS (Ulusal Elektronik Tebligat Sistemi — e-Tebligat) e-imzası** eklendi: pencerede
   üstten **e-Devlet / PTT KEP / UETS** geçişi (üçüncü mod). e-Tebligat işleminde gördüğünüz

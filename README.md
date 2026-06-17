@@ -60,6 +60,7 @@ Dört ayrı e-imza istemcisinin yaptığı işi Sello tek başına görür — a
 | 🌐 **Türkçe / İngilizce** | Dil değişimi tüm pencerelere ve tepsi menüsüne **anında** yansır. |
 | 🔄 **İmzalı otomatik güncelleme** | Açılışta yeni sürümü görür, **ed25519 imzasıyla doğrular**, kendini yeniler. |
 | 🛡️ **Kart güvenliği** | PIN sayacını düşürmeden okur; **son deneme hakkında** otomatik giriş yapmaz. Kilitli/boş PIN gönderilmez. |
+| ✅ **Sertifika ön-kontrolü** | İmzadan önce sertifikanın **süresi + iptal durumu (CRL)** kontrol edilir; geçersizse imza yapılmaz. Kökler gömülü, kontrol bellekte, **fail-open**. Takılı Kartlar'da geçerlilik renk gradyanı. |
 | 🔒 **TLS her zaman açık** | Sertifika doğrulaması kapatılmaz; PIN ve imzalı veri loglanmaz. |
 
 ## ⬇ İndirme
