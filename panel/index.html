@@ -67,6 +67,10 @@
     .depot-alert code { background:#fde9c8; padding:1px 6px; border-radius:5px;
                         font-family: ui-monospace,"Consolas",monospace; font-size:12px; }
     #depotAlert.hidden { display:none; }
+    .depot-clear { background:#fff; color:#7a4f00; border:1px solid #e0a93a; border-radius:7px;
+                   padding:6px 12px; font-size:13px; cursor:pointer; }
+    .depot-clear:hover { background:#fdf0d8; }
+    .depot-clear:disabled { opacity:0.5; cursor:default; }
   </style>
 </head>
 <body>
@@ -90,6 +94,9 @@
     <div id="depotAlert" class="depot-alert hidden">
       <strong class="t">⚠️ Güven deposu değişti</strong>
       <span id="depotAlertMsg"></span>
+      <div style="margin-top:10px;">
+        <button id="depotClearBtn" class="depot-clear">Uyarıyı temizle</button>
+      </div>
     </div>
     <div class="cards">
       <div class="card"><div id="cTotal" class="n">—</div><div class="l">Toplam makine</div></div>
@@ -123,7 +130,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged }
       from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-    import { getFirestore, collection, onSnapshot, deleteDoc, doc, updateDoc, arrayUnion, arrayRemove }
+    import { getFirestore, collection, onSnapshot, deleteDoc, doc, updateDoc, deleteField, arrayUnion, arrayRemove }
       from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
     const firebaseConfig = {
@@ -148,6 +155,7 @@
       signInWithPopup(auth, new GoogleAuthProvider()).catch(e => $("msg").textContent = e.message);
     $("signoutBtn").onclick = () => signOut(auth);
     $("refreshBtn").onclick = render;
+    $("depotClearBtn").onclick = clearDepotAlerts;
     $("search").addEventListener("input", render);
     // Satır eylemleri (yalnız sahibin; hepsi Firestore kurallarıyla korunur):
     //  • Sil → kurulumlar kaydını siler.  • Engelle/Özel yetki → config/access listelerini günceller.
@@ -241,6 +249,22 @@
         `Gömülü sertifika kökleri güncellenmeli → <strong>yeni bir Sello sürümü çıkarın</strong> ` +
         `(<code>trust_roots.pem</code> + <code>TRUST_DEPOT_SHA256</code> yenilenir).`;
       box.classList.remove("hidden");
+    }
+
+    // Sahibin uyarıyı temizlemesi: işaretli tüm makinelerin depot_* alanlarını siler → banner kapanır
+    // (snapshot canlı günceller). Gerçek bir değişiklikte makine sonraki günlük kontrolde tekrar
+    // bildirebilir; yani bu "gördüm/kapat" demektir — kalıcı çözüm yeni sürüm çıkarmaktır.
+    async function clearDepotAlerts() {
+      const flagged = data.filter(d => d.depot_mismatch === true);
+      if (!flagged.length) return;
+      if (!confirm(flagged.length + " makinenin 'güven deposu değişti' uyarısını temizlemek istiyor musun?")) return;
+      const btn = $("depotClearBtn"); btn.disabled = true;
+      try {
+        await Promise.all(flagged.map(d => updateDoc(doc(db, "kurulumlar", d.id), {
+          depot_mismatch: deleteField(), depot_seen_sha: deleteField(), depot_checked: deleteField()
+        })));
+      } catch (e) { alert("Temizleme başarısız (yetki/kural?): " + e.message); }
+      btn.disabled = false;
     }
 
     function render() {
