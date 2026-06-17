@@ -60,6 +60,13 @@
     .old-note { color:var(--muted); font-size:12px; margin-right:6px; }
     tr.priv-row td { background:#eafaf1; }
     tr.blocked-row td { background:#fdecea; }     /* engelli satır (yetki rengini ezsin diye sonra) */
+    /* DASH: güven deposu değişti alarmı (herhangi bir Sello bildirdiyse). */
+    .depot-alert { background:#fff4e5; border:1px solid #ffce85; color:#7a4f00; border-radius:10px;
+                   padding:14px 18px; margin-bottom:16px; font-size:14px; line-height:1.55; }
+    .depot-alert strong.t { display:block; font-size:15px; margin-bottom:4px; color:#8a5a00; }
+    .depot-alert code { background:#fde9c8; padding:1px 6px; border-radius:5px;
+                        font-family: ui-monospace,"Consolas",monospace; font-size:12px; }
+    #depotAlert.hidden { display:none; }
   </style>
 </head>
 <body>
@@ -80,6 +87,10 @@
   </div>
 
   <main id="dash" class="hidden">
+    <div id="depotAlert" class="depot-alert hidden">
+      <strong class="t">⚠️ Güven deposu değişti</strong>
+      <span id="depotAlertMsg"></span>
+    </div>
     <div class="cards">
       <div class="card"><div id="cTotal" class="n">—</div><div class="l">Toplam makine</div></div>
       <div class="card"><div id="cActive" class="n">—</div><div class="l">Son 7 gün aktif</div></div>
@@ -213,6 +224,23 @@
       $("cActive").textContent = data.filter(d => now - tsMillis(d.last_seen) < week).length;
       $("cOpens").textContent = data.reduce((s, d) => s + (Number(d.open_count) || 0), 0);
       $("cVersions").textContent = new Set(data.map(d => d.version || "?")).size;
+      depotAlert();
+    }
+
+    // DASH: herhangi bir Sello, KamuSM güven deposunun gömülü çıpadan FARKLI olduğunu bildirdiyse
+    // (kurulumlar/<makine>.depot_mismatch == true) üstte uyarı göster. Sahip yeni sürüm çıkarır.
+    function depotAlert() {
+      const flagged = data.filter(d => d.depot_mismatch === true);
+      const box = $("depotAlert");
+      if (!flagged.length) { box.classList.add("hidden"); return; }
+      const shas = [...new Set(flagged.map(d => d.depot_seen_sha).filter(Boolean))];
+      const shaTxt = shas.length ? shas.map(s => esc(s.slice(0, 16)) + "…").join(", ") : "—";
+      $("depotAlertMsg").innerHTML =
+        `${flagged.length} makine, KamuSM güven deposunun (SertifikaDeposu.xml) gömülü çıpadan ` +
+        `farklı olduğunu bildirdi. Yeni parmak izi: <code>${shaTxt}</code>. ` +
+        `Gömülü sertifika kökleri güncellenmeli → <strong>yeni bir Sello sürümü çıkarın</strong> ` +
+        `(<code>trust_roots.pem</code> + <code>TRUST_DEPOT_SHA256</code> yenilenir).`;
+      box.classList.remove("hidden");
     }
 
     function render() {
