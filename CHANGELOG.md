@@ -2,6 +2,13 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.8.1] — Kararlılık: handle sızıntısı giderildi
+- **Uzun süre açık kalan Sello'da kaynak (handle) birikmesi giderildi:** tepside sürekli çalışan
+  uygulama, kart tak/çıkar durumunu izlerken zamanla Windows "handle" biriktiriyordu (boştayken bile).
+  Kart izleme artık doğrudan Windows akıllı-kart altyapısıyla (PC/SC) **olay-tabanlı** yapılıyor —
+  sürekli yoklama yok. Birikme **sıfırlandı** ve kart tak/çıkar algılama **anlık** hâle geldi.
+- İmza / CMS / e-imza protokol yolları (**e-Devlet · UYAP · PTT KEP · UETS**) değişmeden korundu.
+
 ## [0.8.0] — Daha akıcı imza + güven deposu izleme
 - **İmza akışı hızlandırıldı:** sertifika iptal kontrolü (CRL) artık kart kilidini tutmadan,
   arka planda yapılıyor — yavaş veya soğuk ağda imza atarken bekleme belirgin biçimde azaldı.
