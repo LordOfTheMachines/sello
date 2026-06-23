@@ -73,6 +73,8 @@ Dört ayrı e-imza istemcisinin yaptığı işi Sello tek başına görür — a
 > kullanarak **[Kullanım Sözleşmesi'ni (EULA)](LICENSE)** kabul etmiş olursunuz.
 
 > **Önkoşul:** Windows 10/11 + akıllı kart okuyucusu ve kart sürücüsü (AKİS için `akisp11.dll`).
+> Visual C++ Redistributable, .NET veya Java gibi ek çalışma-anları **gerekmez** (gömülü gelir);
+> arayüz bileşeni WebView2 Windows 11 ile gelir, eksikse Sello ilk açılışta kendisi kurar.
 
 ## 🚀 Kullanım
 

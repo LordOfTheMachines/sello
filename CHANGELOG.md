@@ -2,6 +2,16 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.8.2] — Uyumluluk: VC++ Redistributable gereksinimi kaldırıldı
+- **"VCRUNTIME140_1.dll bulunamadı" hatası giderildi:** bazı temiz Windows makinelerinde Sello, Microsoft
+  Visual C++ Redistributable kurulu olmadığında açılmıyordu. C runtime artık doğrudan exe'ye **statik
+  gömülü** — Visual C++ Redistributable **hiç gerekmez**; Sello yine tek dosya ve hiçbir ek kurulum
+  yapılmadan çalışır (dosya yalnızca ~0,5 MB büyüdü).
+- **WebView2 otomatik kontrol + kurulum:** arayüz bileşeni (WebView2) eksik olan nadir makinelerde Sello,
+  açılışta resmî Microsoft kurulumunu kendisi indirip kurar.
+- İmza / CMS / e-imza protokol yolları (**e-Devlet · UYAP · PTT KEP · UETS**) değişmedi; bu sürüm yalnızca
+  bir dağıtım/uyumluluk düzeltmesidir.
+
 ## [0.8.1] — Kararlılık: handle sızıntısı giderildi
 - **Uzun süre açık kalan Sello'da kaynak (handle) birikmesi giderildi:** tepside sürekli çalışan
   uygulama, kart tak/çıkar durumunu izlerken zamanla Windows "handle" biriktiriyordu (boştayken bile).
