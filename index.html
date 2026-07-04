@@ -208,10 +208,14 @@
     footer .wrap{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
     footer a{color:var(--muted);font-weight:600}
     footer .giltec-line{justify-content:center;margin-top:16px}
-    .giltec-badge{display:inline-flex;align-items:center;gap:9px;color:var(--muted);text-decoration:none;font-weight:600}
-    .giltec-badge img{display:block;width:24px;height:24px}
-    .giltec-badge b{color:var(--ink);font-weight:700}
-    .giltec-badge:hover b{color:var(--blue)}
+    @font-face{font-family:'GTOxanium';font-style:normal;font-weight:800;font-display:swap;src:url(assets/oxanium-giltec.woff2) format('woff2')}
+    @font-face{font-family:'GTPlexMono';font-style:normal;font-weight:600;font-display:swap;src:url(assets/plexmono-hukuk.woff2) format('woff2')}
+    .gt-logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
+    .gt-logo .gt-mk{display:block;width:34px;height:34px}
+    .gt-logo .gt-wm{display:flex;flex-direction:column;line-height:1;gap:2px}
+    .gt-logo .gt-wm b{font-family:'GTOxanium',system-ui,sans-serif;font-weight:800;font-size:21px;letter-spacing:-.5px;color:#1E293B}
+    .gt-logo .gt-wm small{font-family:'GTPlexMono',ui-monospace,monospace;font-weight:600;font-size:11px;letter-spacing:.02em;color:#162F82}
+    .gt-logo:hover .gt-wm b{color:#1E40AF}
     .kbd{font-family:Consolas,ui-monospace,monospace;background:#eef3f6;border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-size:13px;color:#33424c}
 
     /* iletişim */
@@ -550,14 +554,13 @@
         <a href="mailto:gilikmehmet@gmail.com">gilikmehmet@gmail.com</a> ·
         <a href="tel:+905425438375">+90 542 543 83 75</a> ·
         <a href="https://github.com/LordOfTheMachines/sello">GitHub</a> ·
-        <a href="https://github.com/LordOfTheMachines/sello/blob/main/LICENSE">Lisans</a> ·
-        <a href="https://hukuk.giltec.com.tr/products/">GilTec</a>
+        <a href="https://github.com/LordOfTheMachines/sello/blob/main/LICENSE">Lisans</a>
       </span>
     </div>
     <div class="wrap giltec-line">
-      <a class="giltec-badge" href="https://hukuk.giltec.com.tr/products/" aria-label="GilTec Hukuk — ürünler">
-        <img src="assets/giltec-mark.svg" alt="" width="24" height="24" loading="lazy" />
-        <span>Bir <b>GilTec Hukuk</b> ürünüdür</span>
+      <a class="gt-logo" href="https://hukuk.giltec.com.tr/products/" aria-label="GilTec Hukuk — ürünler">
+        <img class="gt-mk" src="assets/giltec-mark.svg" width="34" height="34" alt="" />
+        <span class="gt-wm"><b>GilTec</b><small>Hukuk</small></span>
       </a>
     </div>
   </footer>
