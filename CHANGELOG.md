@@ -2,6 +2,23 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.8.3] — Sessiz otomatik güncelleme, akıcı e-Adalet/UYAP akışı ve güvenlik sertleştirmesi
+- **Otomatik güncelleme artık sessiz ve arka planda:** "Otomatik güncelleme" açıkken (varsayılan) yeni
+  sürüm açılışta **kendiliğinden** indirilip kurulur ve uygulama yeniden başlar — tıklamanız gereken bir
+  şey yok. Kapatırsanız güncelleme size **belirgin bir şeritle** duyurulur (indirme çubuğu + saatlik
+  hatırlatma bildirimi), kararı siz verirsiniz.
+- **e-Adalet / UYAP geçişi kolaylaştı:** UYAP portalları için gereken köprüyü, kurulu **UYAP E-İmza**
+  istemcisi engelliyorsa Sello bunu açılışta **tek tıkla, sessizce** (siyah komut penceresi açılmadan)
+  kaldırıp kendini yeniden başlatır; köprü anında devreye girer. İşlem sırasında ilerleme şeridiyle
+  bilgilendirilirsiniz.
+- **Bağlantı kontrolü kendini toparlar:** açılışta bağlantı henüz kurulmadıysa gösterilen kırmızı ışık,
+  bağlantı sağlanınca **kendiliğinden yeşile** döner — elle yenilemeye gerek yok.
+- **Güvenlik sertleştirmeleri (saldırgan gözüyle denetim sonrası):** dış kaynaklardan veri çekiminde
+  ek koruma (yönlendirme/boyut sınırları), yerel imza köprüsü için kimlik-sızıntısına karşı ek doğrulama
+  ve WebView2 kurulum dosyasının **imza doğrulaması**. PIN ve imzalı veri yine hiçbir yere loglanmaz;
+  TLS doğrulaması her yerde açıktır.
+- İmza / CMS / e-imza protokol yolları (**e-Devlet · UYAP · PTT KEP · UETS**) değişmedi.
+
 ## [0.8.2] — Uyumluluk: VC++ Redistributable gereksinimi kaldırıldı
 - **"VCRUNTIME140_1.dll bulunamadı" hatası giderildi:** bazı temiz Windows makinelerinde Sello, Microsoft
   Visual C++ Redistributable kurulu olmadığında açılmıyordu. C runtime artık doğrudan exe'ye **statik

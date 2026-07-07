@@ -58,7 +58,7 @@ Dört ayrı e-imza istemcisinin yaptığı işi Sello tek başına görür — a
 | 🖥️ **Sistem tepsisinde arka planda** | Sol çift-tık → e-Devlet penceresi. Sağ-tık → **Takılı Kartlar · Sistem Kontrolü · Ayarlar** (tek pencere, sekmeli). |
 | ⚙️ **Tam kullanıcı kontrolü** | "Windows ile başlat" Ayarlar'dan açılıp kapatılır; **kendini kaldırma** ile tüm izler temizlenir. |
 | 🌐 **Türkçe / İngilizce** | Dil değişimi tüm pencerelere ve tepsi menüsüne **anında** yansır. |
-| 🔄 **İmzalı otomatik güncelleme** | Açılışta yeni sürümü görür, **ed25519 imzasıyla doğrular**, kendini yeniler. |
+| 🔄 **İmzalı otomatik güncelleme** | Yeni sürümü açılışta **sessizce arka planda** indirir, **ed25519 imzasıyla doğrular** ve kendini yeniler (dilerseniz kapatıp elle onaylayabilirsiniz). |
 | 🛡️ **Kart güvenliği** | PIN sayacını düşürmeden okur; **son deneme hakkında** otomatik giriş yapmaz. Kilitli/boş PIN gönderilmez. |
 | ✅ **Sertifika ön-kontrolü** | İmzadan önce sertifikanın **süresi + iptal durumu (CRL)** kontrol edilir; geçersizse imza yapılmaz. Kökler gömülü, kontrol bellekte, **fail-open**. Takılı Kartlar'da geçerlilik renk gradyanı. |
 | 🔒 **TLS her zaman açık** | Sertifika doğrulaması kapatılmaz; PIN ve imzalı veri loglanmaz. |
