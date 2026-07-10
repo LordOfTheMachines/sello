@@ -2,6 +2,18 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.8.4] — Güvenlik sertleştirmesi
+- **Sertifika iptal kontrolünde iç-ağ koruması:** Sello, imza öncesi sertifikanın iptal listesini (CRL)
+  kontrol ederken artık yalnızca **genel internet adreslerine** bağlanır; sertifikada belirtilen adres
+  yerel ağa / localhost'a / bulut metadata adresine **yönlendirilemez** (SSRF sertleştirmesi). Bu kontrol
+  "fail-open"dır — imzayı asla engellemez, yalnızca güvenliği artırır.
+- **Otomatik güncelleme kaynağı sabitlendi:** güncelleme **yalnızca resmî depodan** gelir; uygulamanın
+  yanına yerleştirilen bir ayar dosyası güncellemeyi başka bir kaynağa yönlendiremez (sürüm düşürme /
+  sahte güncelleme koruması). İmza doğrulaması (ed25519) her zamanki gibi açıktır.
+- **İç dokümantasyon güncellendi** (makine kimliği modeli, mimari). Kullanıcıyı etkileyen bir değişiklik yok.
+- İmza / CMS / e-imza protokol yolları (**e-Devlet · UYAP · PTT KEP · UETS**) **değişmedi** — bu sürüm
+  yalnızca bir güvenlik sertleştirmesidir.
+
 ## [0.8.3] — Sessiz otomatik güncelleme, akıcı e-Adalet/UYAP akışı ve güvenlik sertleştirmesi
 - **Otomatik güncelleme artık sessiz ve arka planda:** "Otomatik güncelleme" açıkken (varsayılan) yeni
   sürüm açılışta **kendiliğinden** indirilip kurulur ve uygulama yeniden başlar — tıklamanız gereken bir

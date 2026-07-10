@@ -108,6 +108,8 @@ Tepsi → **Ayarlar → "Sello'yu kaldır"**: autostart kaydı, yerel veri ve uy
 - Kart **kilitliyse** veya **son deneme hakkındaysa** giriş otomatik denenmez; uyarı verilir.
 - İmza **akıllı kartın içinde** üretilir; kartın özel anahtarı dışarı çıkmaz.
 - UYAP köprüsü yalnız **127.0.0.1**'de ve yalnız **onaylı UYAP alan adlarına** açıktır.
+- Otomatik güncelleme **yalnızca resmî kaynaktan** gelir (kaynak sabittir, **ed25519 imzasıyla** doğrulanır);
+  sertifika iptal kontrolü (CRL) yerel/iç ağ adreslerine **yönlendirilemez**.
 
 ## 📋 Sürüm geçmişi
 
