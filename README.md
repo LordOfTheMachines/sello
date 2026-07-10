@@ -62,6 +62,7 @@ Dört ayrı e-imza istemcisinin yaptığı işi Sello tek başına görür — a
 | 🛡️ **Kart güvenliği** | PIN sayacını düşürmeden okur; **son deneme hakkında** otomatik giriş yapmaz. Kilitli/boş PIN gönderilmez. |
 | ✅ **Sertifika ön-kontrolü** | İmzadan önce sertifikanın **süresi + iptal durumu (CRL)** kontrol edilir; geçersizse imza yapılmaz. Kökler gömülü, kontrol bellekte, **fail-open**. Takılı Kartlar'da geçerlilik renk gradyanı. |
 | 🔒 **TLS her zaman açık** | Sertifika doğrulaması kapatılmaz; PIN ve imzalı veri loglanmaz. |
+| 🌡️ **Soğuk-bağlantı dayanıklılığı** | Açılışta sunucuya ilk bağlantı soğukken oluşan anlık hatayı **otomatik yeniden dener** → ilk seferde çalışır. İmza gönderiminde tekrar yalnız **bağlantı hiç kurulamadığında** (çift-gönderim imkânsız); başarıda ek gecikme yok. |
 
 ## ⬇ İndirme
 

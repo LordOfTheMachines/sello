@@ -2,6 +2,23 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.8.5] — Kararlılık: soğuk-bağlantı dayanıklılığı
+- **"error sending request" / anlık bağlantı hatası giderildi:** Bazen (özellikle uygulama yeni
+  açıldığında) gerçek bir sorun olmadığı hâlde, sunucuya ilk bağlantı **soğuk** olduğu için
+  "İmzalama hatası" veya "Kart okunamadı" alınabiliyordu. Artık bağlantı kurulamazsa Sello
+  **otomatik yeniden dener** → çoğu durumda ilk seferde çalışır. **Güvenli tasarım:** yeniden
+  gönderim yalnız **bağlantı hiç kurulamadığında** (imzalı veri sunucuya gitmemişken) yapılır →
+  **çift-gönderim imkânsız**; belirsiz durumlarda tekrar gönderilmez.
+- **Kart okuma dayanıklılığı:** Kart yeni takıldığında / okuyucu uyanırken oluşan anlık okuma
+  hatası sessizce yeniden denenir.
+- **Otomatik güncelleme daha sağlam:** Arka plan denetimi artık pencere açık olsun olmasın
+  periyodik çalışır; ilk denemede ağ dalgalanması olursa kendini toparlar, uygulama açıkken
+  çıkan yeni sürümü de alır.
+- **Güncelleme uyarısı düzeltmesi:** Ayarlardan otomatik güncellemeyi açıp kapatınca uyarı şeridi
+  artık doğru belirir/kaybolur (elle yenileme gerekmez).
+- Başarılı bağlantıda **ek gecikme yoktur**; yeniden deneme yalnız gerçek hatada devreye girer.
+  İmza / CMS / e-imza protokol yolları (**e-Devlet · UYAP · PTT KEP · UETS**) **değişmedi**.
+
 ## [0.8.4] — Güvenlik sertleştirmesi
 - **Sertifika iptal kontrolünde iç-ağ koruması:** Sello, imza öncesi sertifikanın iptal listesini (CRL)
   kontrol ederken artık yalnızca **genel internet adreslerine** bağlanır; sertifikada belirtilen adres
