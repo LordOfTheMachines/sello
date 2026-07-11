@@ -17,10 +17,17 @@
 
 <p align="center">
   <a href="../../releases/latest/download/sello-app.exe"><b>⬇ Son sürümü indir (.exe)</b></a> &nbsp;·&nbsp;
-  <a href="../../releases">Eski sürümler</a> &nbsp;·&nbsp;
   <a href="https://lordofthemachines.github.io/sello/">Tanıtım sayfası</a> &nbsp;·&nbsp;
   <a href="CHANGELOG.md">Sürüm geçmişi</a>
 </p>
+
+> **⚠️ Yalnızca resmî kaynaktan indirin & dosyayı doğrulayın.**
+> Sello YALNIZCA bu depodan ([Releases](../../releases)) ve resmî [tanıtım sitesinden](https://lordofthemachines.github.io/sello/) dağıtılır. Başka bir siteden / gruptan / e-posta ekinden gelen "Sello"yu **çalıştırmayın** — değiştirilmiş sahte bir kopya kart/PIN/kimlik bilgilerinizi çalmaya çalışabilir.
+>
+> İndirdiğiniz `sello-app.exe`'nin **SHA-256** özeti (**v0.8.6**) şu olmalıdır:
+> `35326f209b0b976df6978b58c6c9e2172441f113235fb1de4fb3b583a5a8ecf8`
+>
+> PowerShell ile doğrulayın: `Get-FileHash .\sello-app.exe -Algorithm SHA256` — çıktı birebir aynı değilse dosya sahtedir/bozuktur, silin.
 
 <p align="center">
   <img src="assets/shot-giris.png" alt="Sello e-Devlet e-imza giriş ekranı" width="680" />

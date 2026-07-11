@@ -2,6 +2,19 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.8.6] — Öz-bütünlük mührü (tamper koruması)
+- **Uygulama artık kendi bütünlüğünü doğruluyor:** Resmî `sello-app.exe`, gövdesi üzerinden alınmış
+  bir **ed25519 mührüyle** imzalanır. Uygulama her imzadan önce kendi dosyasını doğrular; exe
+  **değiştirilmiş / kötü niyetle enjekte edilmişse imzalama net bir mesajla REDDEDİLİR** (kart
+  kilitlenmez, PIN sorulmaz) — dört modda da (e-Devlet · UYAP · PTT KEP · UETS). Sessizce bozuk imza
+  ÜRETİLMEZ; güvenli yön olan "reddet" seçilir.
+- **Dosya doğrulama (SHA-256) yayınlandı:** İndirdiğiniz exe'nin gerçekliğini artık siteden ve sürüm
+  notundan **SHA-256** özetiyle kendiniz doğrulayabilirsiniz. Sello'yu yalnızca resmî kaynaktan indirin.
+- **İkili sertleştirme:** Derleme yollarındaki build-makinesi kullanıcı adı anonimleştirildi; sembol
+  bilgisi çıkarıldı. İşlevsel etki yok.
+- İmza / CMS / e-imza protokol yolları (**e-Devlet · UYAP · PTT KEP · UETS**) **değişmedi** — bu sürüm
+  imza-öncesi bir güvenlik kapısı ve tamper caydırıcısı ekler.
+
 ## [0.8.5] — Kararlılık: soğuk-bağlantı dayanıklılığı
 - **"error sending request" / anlık bağlantı hatası giderildi:** Bazen (özellikle uygulama yeni
   açıldığında) gerçek bir sorun olmadığı hâlde, sunucuya ilk bağlantı **soğuk** olduğu için
