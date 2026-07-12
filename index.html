@@ -517,11 +517,13 @@
         <div class="opt">
           <span><b>sello-app.exe</b> — taşınabilir tek dosya · kurulum yok · kendini günceller</span>
         </div>
-        <div class="opt" style="margin-top:10px;text-align:left">
-          <span>🔒 <b>Dosyayı doğrulayın (v0.8.6):</b> indirdiğiniz <b>sello-app.exe</b>'nin SHA-256 özeti şu olmalıdır —</span>
-          <code style="display:block;word-break:break-all;margin-top:6px;font-size:12px;line-height:1.5">35326f209b0b976df6978b58c6c9e2172441f113235fb1de4fb3b583a5a8ecf8</code>
-          <span style="display:block;margin-top:8px">PowerShell ile: <span class="kbd">Get-FileHash .\sello-app.exe -Algorithm SHA256</span></span>
-          <span style="display:block;margin-top:8px">⚠️ Çıktı yukarıdakiyle <b>birebir aynı değilse</b> dosya sahte/bozuktur — çalıştırmayın, silin. Sello'yu <b>YALNIZCA</b> bu resmî siteden ve <a href="https://github.com/LordOfTheMachines/sello/releases">GitHub sürüm sayfasından</a> indirin; başka kaynaktan gelen kopyalar kart/PIN/kimlik bilgilerinizi çalmaya çalışabilir.</span>
+        <div style="max-width:600px;margin:18px auto 0;text-align:left;border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:#fbfdfe">
+          <div style="font-weight:700;color:var(--ink)">🔒 Dosyayı doğrulayın <span style="font-weight:500;color:var(--muted)">— v0.8.6</span></div>
+          <div style="color:var(--muted);font-size:14px;margin:6px 0 10px">İndirdiğiniz <b>sello-app.exe</b>'nin SHA-256 özeti şu olmalıdır:</div>
+          <div class="kbd" style="display:block;word-break:break-all;padding:9px 11px;font-size:12.5px;line-height:1.6">35326f209b0b976df6978b58c6c9e2172441f113235fb1de4fb3b583a5a8ecf8</div>
+          <div style="color:var(--muted);font-size:14px;margin:12px 0 6px">PowerShell ile doğrulayın:</div>
+          <div class="kbd" style="display:block;padding:9px 11px;font-size:12.5px">Get-FileHash .\sello-app.exe -Algorithm SHA256</div>
+          <div style="color:var(--muted);font-size:13px;margin-top:12px">Çıktı yukarıdaki değerle aynıysa dosya orijinaldir; farklıysa indirmeyi yenileyin. Sello'yu yalnızca bu resmî siteden ve <a href="https://github.com/LordOfTheMachines/sello/releases">GitHub sürüm sayfasından</a> indirin.</div>
         </div>
         <p class="req">İndirip kullanarak <a href="https://github.com/LordOfTheMachines/sello/blob/main/LICENSE">Kullanım Sözleşmesi'ni (EULA)</a> kabul edersiniz · yalnız resmî kaynaktan indirin, yeniden dağıtım yasaktır · yazılım "olduğu gibi" sunulur.</p>
       </div>
