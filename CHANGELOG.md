@@ -2,6 +2,19 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.8.7] — Bağlantı dayanıklılığı + arayüz düzeltmeleri
+- **Bağlantı kontrolünde otomatik yeniden deneme:** Geçici ağ hataları (soğuk DNS/TLS, anlık kopma)
+  artık kırmızı ışık göstermez. Işık önce sarı **"yeniden deneniyor…"** durumunda kısa aralıklarla
+  kendiliğinden yeniden denenir; bağlantı gerçekten kurulamıyorsa kırmızıya düşer ve pencere açık
+  kaldıkça arka planda **dakikada bir kendini onarmayı** sürdürür — bağlantı dönünce **tıklamasız**
+  yeşile döner. "Yeniden Dene"ye tekrar tekrar basma ihtiyacı kalktı. Hem ana penceredeki Bağlantı
+  Kontrolü hem tepsi panelindeki Sistem sekmesi için geçerlidir.
+- **Tepsi paneli konum düzeltmesi:** Sağ-tık menüsünden açılan panel artık doğrudan **sağ alt köşede**
+  belirir (önceden bir anlık sol üstte görünüp ışınlanıyordu).
+- **İç sadeleştirme:** Üç imza modunun ortak imza-öncesi kontrol blokları tek yardımcıda birleştirildi
+  (davranış birebir aynı; dört giriş modu gerçek kartla canlı doğrulandı).
+- İmza / CMS / e-imza protokol yolları (**e-Devlet · UYAP · PTT KEP · UETS**) **değişmedi**.
+
 ## [0.8.6] — Öz-bütünlük mührü (tamper koruması)
 - **Uygulama artık kendi bütünlüğünü doğruluyor:** Resmî `sello-app.exe`, gövdesi üzerinden alınmış
   bir **ed25519 mührüyle** imzalanır. Uygulama her imzadan önce kendi dosyasını doğrular; exe
