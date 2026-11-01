@@ -2,6 +2,13 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.8.8] — "Windows ile başlat" düzeltmesi
+- **"Windows ile başlat" kaydı bazı makinelerde yazılamıyordu** ("autostart kaydı güncellenemedi …
+  os error 5"). Sello başlangıç kaydı için gereğinden geniş erişim yetkisi istiyordu; artık yalnız kaydı
+  yazmaya yetecek **en dar yetki** isteniyor.
+- Erişim yine reddedilirse uyarı, **antivirüs veya kurum ilkesinin** kaydı engelliyor olabileceğini belirtir.
+- İmza / CMS / e-imza protokol yolları (**e-Devlet · UYAP · PTT KEP · UETS**) **değişmedi**.
+
 ## [0.8.7] — Bağlantı dayanıklılığı + arayüz düzeltmeleri
 - **Bağlantı kontrolünde otomatik yeniden deneme:** Geçici ağ hataları (soğuk DNS/TLS, anlık kopma)
   artık kırmızı ışık göstermez. Işık önce sarı **"yeniden deneniyor…"** durumunda kısa aralıklarla
