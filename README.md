@@ -24,8 +24,8 @@
 > **🔒 Yalnızca resmî kaynaktan indirin & dosyayı doğrulayın.**
 > Sello YALNIZCA bu depodan ([Releases](../../releases)) ve resmî [tanıtım sitesinden](https://lordofthemachines.github.io/sello/) dağıtılır.
 >
-> İndirdiğiniz `sello-app.exe`'nin **SHA-256** özeti (**v0.8.8**) şu olmalıdır:
-> `601a292aa06c945fff13721986a1328dd0ada88058617f67ae0e4f423e7c606f`
+> İndirdiğiniz `sello-app.exe`'nin **SHA-256** özeti (**v0.9.0**) şu olmalıdır:
+> `04c6541f6ab83c32778e5c9453274b37de3e75a2b33a45f6711b5b677d72d3be`
 >
 > PowerShell ile doğrulayın: `Get-FileHash .\sello-app.exe -Algorithm SHA256` — çıktı yukarıdaki değerle aynıysa dosya orijinaldir.
 

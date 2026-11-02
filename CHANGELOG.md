@@ -2,6 +2,19 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.9.0] — e-Devlet belge imzası + temiz kaldırma
+- **e-Devlet belge imzası:** Sello artık yalnız girişi değil, e-Devlet **belge imzalama** işlemlerini de
+  (örneğin adres beyanı) tanır. Resmî uygulamadaki biçim kullanılır: XML belgelerde **XAdES XML imzası**,
+  önceden imzalı belgelerde **mevcut imzaya imzacı ekleme**, diğerlerinde CMS. Sağlık / PDF imzası
+  işlemlerinde PIN sorulmadan "PDF İmzalama Uygulaması'nı kullanın" uyarısı gösterilir. Sunucu hatalarında
+  resmî Türkçe açıklama görünür; indirilen belge doğru uzantıyla kaydedilir.
+- **Kaldırma yarım kalıyordu:** Ayarlar → Kaldır sonrasında exe ve veri klasörü artık tamamen silinir
+  (tek-exe yapısı korunur, yardımcı program kurulmaz).
+- **Daha açıklayıcı bağlantı hataları:** ağ hatalarında asıl neden (zaman aşımı, bağlantı kopması,
+  sertifika) da gösterilir — e-Devlet, KEP, UETS.
+- **Tutarlı güvenlik kontrolü:** lisans ve bütünlük kontrolü tüm giriş noktalarında aynı şekilde uygulanır.
+- Giriş imza yolları (**e-Devlet · UYAP · PTT KEP · UETS**) **değişmedi**.
+
 ## [0.8.8] — "Windows ile başlat" düzeltmesi
 - **"Windows ile başlat" kaydı bazı makinelerde yazılamıyordu** ("autostart kaydı güncellenemedi …
   os error 5"). Sello başlangıç kaydı için gereğinden geniş erişim yetkisi istiyordu; artık yalnız kaydı
