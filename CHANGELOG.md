@@ -2,6 +2,21 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.10.0] — kart desteği, PDF/XML imzası ve daha güvenilir bağlantı
+- **Kart tipi otomatik tanınır:** listede yanlış tip seçili olsa bile takılı kart tanınır, doğru sürücü kullanılır;
+  seçim hatırlanır.
+- **Birden çok kart:** takılı kartlardaki imza sertifikaları listelenir, imza seçilen sertifikayla atılır.
+- **Mali mühür** sertifikası imzadan önce anlaşılır bir mesajla reddedilir. **EC kartla e-Devlet girişi** eklendi.
+- **PTT KEP ve UETS:** PDF imzası (PAdES) isteyen işlemler imzalanır; KEP'te XML imzası (XAdES) da eklendi. İmzalı
+  PDF/XML kaydedilebilir. KEP İşlem Kodu 6 hane olmalıdır.
+- **E-İmzaTR kartlarında iptal kontrolü çalışmıyordu:** imza öncesi kontrol sessizce atlanıyordu; artık yapılıyor,
+  CRL'den sonuç alınamazsa OCSP de deneniyor.
+- **e-Devlet girişindeki "10054" bağlantı hatası:** bağlantı sunucu tarafından koparıldığında istek, resmî uygulamadaki
+  gibi bir kez yeniden gönderilir.
+- **UYAP köprüsü:** kart geçici olarak okunamazsa bir kez daha denenir; son kullanılan kart tipini kullanır.
+- Birden çok kart, AKİS dışı kartlar, EC kartlar ve PDF/XML imzası isteyen işlemler gerçek kullanımda henüz denenmedi;
+  sorun yaşarsanız lütfen bildirin.
+
 ## [0.9.0] — e-Devlet belge imzası + temiz kaldırma
 - **e-Devlet belge imzası:** Sello artık yalnız girişi değil, e-Devlet **belge imzalama** işlemlerini de
   (örneğin adres beyanı) tanır. Resmî uygulamadaki biçim kullanılır: XML belgelerde **XAdES XML imzası**,
