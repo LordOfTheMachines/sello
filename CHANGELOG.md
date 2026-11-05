@@ -2,6 +2,15 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.11.0] — teşhis kayıtları ve daha düzenli günlük
+- **Teşhis kayıtları:** giriş veya imza hata verdiğinde hatanın teknik ayrıntısı ve kısa sistem bilgisi (Windows sürümü,
+  kart okuyucu, kart tipi) geliştirmeye gönderilir; aynı hata günde bir kez. PIN, TC kimlik no, ad-soyad, kart seri no
+  ve imzalanan veri GÖNDERİLMEZ. Ayarlar → "Teşhis kayıtlarını paylaş" ile kapatılabilir; "Kayıtları kopyala" temizlenmiş
+  kayıtları panoya alır.
+- **Kullanım sözleşmesi:** toplanan bilgiler 11-B maddesinde listelendi; sözleşme bir kez yeniden onaya sunulur.
+- Bazı bilgisayarlarda açılış bilgisi kaydedilemiyordu; artık açılışta hemen kaydedilir.
+- Günlük dosyasının aynı kart okuyucu uyarısıyla dolması önlendi.
+
 ## [0.10.0] — kart desteği, PDF/XML imzası ve daha güvenilir bağlantı
 - **Kart tipi otomatik tanınır:** listede yanlış tip seçili olsa bile takılı kart tanınır, doğru sürücü kullanılır;
   seçim hatırlanır.
