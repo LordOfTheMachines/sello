@@ -2,6 +2,12 @@
 
 Sürümler [Semantic Versioning](https://semver.org/lang/tr/) izler.
 
+## [0.12.0] — daha hızlı imza ve daha akıllı güncelleme
+- **Daha hızlı:** kart oturumu her işlemden sonra kapatılıp açılmıyor (kart bunun için her seferinde ~1 sn bekletiyordu).
+  e-Devlet imzası ~4,5 sn → ~2,5 sn, UYAP imzası 4,6 sn → 1,4 sn. PIN girilmiş oturum hiçbir zaman açık bırakılmaz.
+- **Güncelleme:** yeni sürüm pencereyi açtığınızda da denetlenir; pencere açıkken kurulmaz, kapattığınızda kurulur.
+- Desteği sona eren eski sürümler için zorunlu güncelleme altyapısı.
+
 ## [0.11.0] — teşhis kayıtları ve daha düzenli günlük
 - **Teşhis kayıtları:** giriş veya imza hata verdiğinde hatanın teknik ayrıntısı ve kısa sistem bilgisi (Windows sürümü,
   kart okuyucu, kart tipi) geliştirmeye gönderilir; aynı hata günde bir kez. PIN, TC kimlik no, ad-soyad, kart seri no
