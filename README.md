@@ -18,11 +18,12 @@
 <p align="center">
   <a href="../../releases/latest/download/sello-app.exe"><b>⬇ Son sürümü indir (.exe)</b></a> &nbsp;·&nbsp;
   <a href="https://lordofthemachines.github.io/sello/">Tanıtım sayfası</a> &nbsp;·&nbsp;
+  <a href="https://hukuk.giltec.com.tr/sello/">GilTec Hukuk sayfası</a> (<a href="https://hukuk.giltec.com.tr/en/sello/">EN</a>) &nbsp;·&nbsp;
   <a href="CHANGELOG.md">Sürüm geçmişi</a>
 </p>
 
 > **🔒 Yalnızca resmî kaynaktan indirin & dosyayı doğrulayın.**
-> Sello YALNIZCA bu depodan ([Releases](../../releases)) ve resmî [tanıtım sitesinden](https://lordofthemachines.github.io/sello/) dağıtılır.
+> Sello YALNIZCA bu depodan ([Releases](../../releases)) ve resmî tanıtım sayfalarından ([github.io](https://lordofthemachines.github.io/sello/) · [hukuk.giltec.com.tr/sello](https://hukuk.giltec.com.tr/sello/)) dağıtılır.
 >
 > İndirdiğiniz `sello-app.exe`'nin **SHA-256** özeti (**v0.12.0**) şu olmalıdır:
 > `77ccf9b22eaa24b466b3e741a3ef1d071d8d76de17aa4d3b8fd25e41c78ddc5f`
